@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inland Auto Detailing — Growth Analytics</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root{
+    --bg:#0b1220; --panel:#121b2e; --panel2:#0f1729; --border:#22304a;
+    --text:#e9edf5; --muted:#9aa8c2; --accent:#ff7a2f; --accent2:#3ecf8e;
+    --blue:#4d8dff; --purple:#a48dff; --red:#ff5c7a; --yellow:#f5c542;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:linear-gradient(180deg,#0b1220 0%,#0d1526 100%);
+    color:var(--text); font-family:'Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    padding:0 0 60px 0;
+  }
+  header{
+    padding:36px 5vw 24px 5vw; border-bottom:1px solid var(--border);
+    background:radial-gradient(1200px 300px at 10% -10%, rgba(255,122,47,0.15), transparent),
+               radial-gradient(1200px 300px at 90% -10%, rgba(61,207,142,0.12), transparent);
+  }
+  .eyebrow{color:var(--accent); font-weight:700; letter-spacing:.12em; text-transform:uppercase; font-size:12px;}
+  h1{margin:8px 0 6px 0; font-size:clamp(26px,3.4vw,38px); font-weight:800;}
+  .sub{color:var(--muted); font-size:15px; max-width:760px; line-height:1.5;}
+  .meta-row{display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:13px; color:var(--muted);}
+  .meta-row span b{color:var(--text);}
+  main{padding:28px 5vw;}
+  section{margin-bottom:44px;}
+  .section-title{display:flex; align-items:baseline; gap:10px; margin-bottom:16px;}
+  .section-title h2{font-size:18px; margin:0; font-weight:700;}
+  .section-title .tag{font-size:11px; color:var(--muted); border:1px solid var(--border); padding:2px 8px; border-radius:20px;}
+  .kpi-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:14px;}
+  .kpi{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:18px;
+  }
+  .kpi .label{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  .kpi .value{font-size:26px; font-weight:800; margin-top:6px;}
+  .kpi .value.accent{color:var(--accent);}
+  .kpi .value.green{color:var(--accent2);}
+  .kpi .note{font-size:12px; color:var(--muted); margin-top:4px;}
+  .grid-2{display:grid; grid-template-columns:1.4fr 1fr; gap:18px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:900px){ .grid-2,.grid-3{grid-template-columns:1fr;} }
+  .card{
+    background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:20px;
+  }
+  .card h3{margin:0 0 14px 0; font-size:14px; color:var(--text); font-weight:700;}
+  .card .card-sub{font-size:12px; color:var(--muted); margin:-10px 0 14px 0;}
+  table{width:100%; border-collapse:collapse; font-size:13px;}
+  th{text-align:left; color:var(--muted); font-weight:600; padding:8px 6px; border-bottom:1px solid var(--border); font-size:11px; text-transform:uppercase; letter-spacing:.04em;}
+  td{padding:9px 6px; border-bottom:1px solid rgba(255,255,255,0.04);}
+  tr:last-child td{border-bottom:none;}
+  .pill{display:inline-block; padding:2px 8px; border-radius:20px; font-size:11px; font-weight:700;}
+  .pill.meta{background:rgba(77,141,255,0.15); color:var(--blue);}
+  .pill.d2d{background:rgba(61,207,142,0.15); color:var(--accent2);}
+  .pill.other{background:rgba(154,168,194,0.15); color:var(--muted);}
+  .bar-row{display:flex; align-items:center; gap:10px; margin-bottom:10px;}
+  .bar-row .label{width:120px; font-size:12px; color:var(--muted); flex-shrink:0;}
+  .bar-track{flex:1; background:var(--panel2); border-radius:6px; height:14px; overflow:hidden;}
+  .bar-fill{height:100%; border-radius:6px;}
+  .bar-row .val{width:70px; text-align:right; font-size:12px; font-weight:700; flex-shrink:0;}
+  .ops-panel{
+    background:linear-gradient(135deg, rgba(255,122,47,0.08), rgba(61,207,142,0.05));
+    border:1px solid var(--border); border-radius:16px; padding:26px;
+  }
+  .ops-panel h2{font-size:20px; margin:0 0 6px 0;}
+  .ops-panel .lede{color:var(--muted); font-size:14px; max-width:820px; line-height:1.55; margin-bottom:22px;}
+  .scenario-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px;}
+  @media (max-width:800px){.scenario-grid{grid-template-columns:1fr;}}
+  .scenario{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:18px;}
+  .scenario .loc{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:700;}
+  .scenario .loc.sd{color:var(--blue);}
+  .scenario .loc.mv{color:var(--accent2);}
+  .scenario h4{margin:6px 0 12px 0; font-size:16px;}
+  .scenario .stat{display:flex; justify-content:space-between; font-size:13px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.05);}
+  .scenario .stat:last-child{border-bottom:none;}
+  .scenario .stat b{color:var(--text);}
+  .verdict{background:var(--panel2); border-left:3px solid var(--accent); border-radius:8px; padding:16px 18px; font-size:14px; line-height:1.6; color:var(--text);}
+  .verdict b{color:var(--accent);}
+  .roadmap{margin-top:20px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
+  @media (max-width:900px){.roadmap{grid-template-columns:1fr 1fr;}}
+  .step{background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px;}
+  .step .phase{font-size:11px; color:var(--accent); font-weight:700; text-transform:uppercase;}
+  .step p{font-size:12.5px; color:var(--muted); line-height:1.5; margin:6px 0 0 0;}
+  footer{padding:24px 5vw; color:var(--muted); font-size:12px; border-top:1px solid var(--border); line-height:1.6;}
+  footer code{background:var(--panel2); padding:2px 6px; border-radius:4px; color:var(--accent2);}
+  canvas{max-height:280px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Inland Auto Detailing · Data Project</div>
+  <h1>Growth &amp; Ad Performance Dashboard</h1>
+  <div class="sub">Job-level revenue, acquisition-channel ROAS, and a two-location capacity model — built from the business's own job log and Meta Ads Manager export to plan the San Diego / Moreno Valley expansion and the next ad campaign.</div>
+  <div class="meta-row">
+    <span>Data window: <b>Jun 14 – Aug 9, 2026</b></span>
+    <span>Source: <b>INLAND TRACKER job log + Meta Ads Manager (lifetime export)</b></span>
+    <span>Method: <b>Python / pandas</b> — see <code style="color:#ff7a2f">analysis.py</code></span>
+  </div>
+</header>
+
+<main>
+
+  <section>
+    <div class="section-title"><h2>Headline Numbers</h2><span class="tag">33 billable detail jobs</span></div>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="label">Total Revenue</div><div class="value" id="k-revenue">–</div><div class="note">Detail jobs, priced</div></div>
+      <div class="kpi"><div class="label">Jobs Completed</div><div class="value" id="k-jobs">–</div><div class="note" id="k-jobs-note">–</div></div>
+      <div class="kpi"><div class="label">Avg Ticket</div><div class="value" id="k-avg">–</div><div class="note">Per job, all channels</div></div>
+      <div class="kpi"><div class="label">Total Ad Spend</div><div class="value accent" id="k-spend">–</div><div class="note">Meta Ads, lifetime</div></div>
+      <div class="kpi"><div class="label">Meta Ads ROAS</div><div class="value green" id="k-roas">–</div><div class="note">Revenue ÷ ad spend</div></div>
+      <div class="kpi"><div class="label">Cost / Meta Job</div><div class="value" id="k-cpj">–</div><div class="note">Blended acquisition cost</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>Revenue Over Time</h2><span class="tag">tracked period, weekly</span></div>
+    <div class="card">
+      <canvas id="trendChart"></canvas>
+    </div>
+  </section>
+
+  <section class="grid-2">
+    <div class="card">
+      <h3>Revenue by Acquisition Channel</h3>
+      <div class="card-sub">Where the money is actually coming from</div>
+      <canvas id="channelChart"></canvas>
+    </div>
+    <div class="card">
+      <h3>Channel Performance</h3>
+      <div class="card-sub">Jobs, revenue, and avg ticket by source</div>
+      <table id="channel-table">
+        <thead><tr><th>Channel</th><th>Jobs</th><th>Revenue</th><th>Avg Ticket</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="grid-3">
+    <div class="card">
+      <h3>Demand by Day of Week</h3>
+      <div class="card-sub">When jobs actually land</div>
+      <canvas id="dowChart"></canvas>
+    </div>
+    <div class="card">
+      <h3>Service Package Mix</h3>
+      <div class="card-sub">Revenue by tier</div>
+      <canvas id="tierChart"></canvas>
+    </div>
+    <div class="card">
+      <h3>Top Cities by Revenue</h3>
+      <div class="card-sub">Current Inland Empire footprint</div>
+      <div id="geo-bars"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="ops-panel">
+      <h2>🚗 Two-Location Expansion Plan: San Diego + Moreno Valley</h2>
+      <div class="lede">
+        The core question: with Isaac full-time in school in San Diego (~1 day/week available) and Samuel full-time
+        in Moreno Valley, can the business run two markets and two ad campaigns at once without either one
+        cracking? The model below is built off the actual current throughput in the job log — not a guess.
+      </div>
+
+      <div class="scenario-grid">
+        <div class="scenario">
+          <div class="loc mv">Moreno Valley / Inland Empire — Samuel, full-time</div>
+          <h4>Stays the core of the business</h4>
+          <div class="stat"><span>Current combined pace</span><b id="mv-current">–</b></div>
+          <div class="stat"><span>Solo-operator capacity</span><b id="mv-capacity">–</b></div>
+          <div class="stat"><span>Projected weekly revenue</span><b id="mv-revenue">–</b></div>
+          <div class="stat"><span>Ad budget recommendation</span><b>~80% of total spend</b></div>
+        </div>
+        <div class="scenario">
+          <div class="loc sd">San Diego — Isaac, ~1 day/week</div>
+          <h4>Treat as a pilot, not a second HQ</h4>
+          <div class="stat"><span>Existing customer base</span><b>None</b></div>
+          <div class="stat"><span>Realistic early capacity</span><b id="sd-capacity">–</b></div>
+          <div class="stat"><span>Projected weekly revenue</span><b id="sd-revenue">–</b></div>
+          <div class="stat"><span>Ad budget recommendation</span><b>~20% of total spend, geo-fenced</b></div>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <b>Verdict: split is workable, but only if Moreno Valley stays the priority and San Diego is run as a
+        low-stakes pilot, not a parallel full launch.</b>
+        The job log shows the business currently produces about
+        <b id="verdict-pace">–</b> jobs/week combined — that pace was hit without a second market
+        pulling attention. Handing Moreno Valley to Samuel full-time should hold or grow that number. San Diego
+        starts at zero: no reviews, no referral network, and only one working day a week, so 1–3 jobs/week is the
+        honest early ceiling, not a shortfall. Running one shared Meta Ads account with two geo-targeted campaigns
+        (rather than doubling total spend) lets the data show which market actually responds before committing
+        more budget or more of Isaac's limited time to San Diego.
+      </div>
+
+      <div class="roadmap">
+        <div class="step"><div class="phase">Weeks 1–4</div><p>Samuel runs Moreno Valley solo. Isaac launches one geo-targeted San Diego Meta campaign, works it the one available day. Keep spend ~80/20 MV/SD.</p></div>
+        <div class="step"><div class="phase">Weeks 5–8</div><p>Compare cost-per-job and ROAS between the two geo campaigns using this same dashboard. Kill or double down on San Diego based on the number, not the hope.</p></div>
+        <div class="step"><div class="phase">Weeks 9–12</div><p>If San Diego ROAS ≥ Moreno Valley's, shift more spend and consider a second weekly day. If it's below, hold San Diego flat and let Moreno Valley absorb the growth.</p></div>
+        <div class="step"><div class="phase">Ongoing</div><p>Re-run <code style="color:#ff7a2f">analysis.py</code> against the updated job log every few weeks to refresh this dashboard and re-check the split.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>Data Quality Note</h2></div>
+    <div class="card" id="dq-note" style="font-size:13px; color:var(--muted); line-height:1.6;"></div>
+  </section>
+
+</main>
+
+<footer>
+  Built from <code>data/job_log.csv</code> and <code>data/ad_spend.csv</code>, processed by <code>analysis.py</code>
+  (Python / pandas) into <code>metrics.json</code>, rendered here with Chart.js. See <code>README.md</code> for
+  methodology and how to re-run this against an updated job log.
+</footer>
+
+<script>
+const METRICS = {
+  "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
+  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change). Restricting to priced detail-service jobs yields 33 jobs, matching the source sheet's own '33 jobs' summary label exactly. The sheet's own TOTALS row ($5,561) doesn't fully reconcile with the sum of its own Total column ($5,591 on this basis) — likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
+  "headline": {
+    "total_jobs": 35,
+    "total_detail_jobs": 33,
+    "total_revenue": 5591.0,
+    "avg_ticket": 169.42,
+    "total_ad_spend": 673.49,
+    "meta_revenue": 3135.0,
+    "meta_jobs": 18,
+    "meta_roas": 4.65,
+    "blended_cost_per_meta_job": 37.42
+  },
+  "channel_performance": [
+    {"channel": "Meta Ads", "jobs": 18, "revenue": 3135.0, "avg_ticket": 174.17},
+    {"channel": "D2D", "jobs": 10, "revenue": 1246.0, "avg_ticket": 124.6},
+    {"channel": "Facebook (Organic)", "jobs": 1, "revenue": 400.0, "avg_ticket": 400.0},
+    {"channel": "Google", "jobs": 1, "revenue": 360.0, "avg_ticket": 360.0},
+    {"channel": "Referral", "jobs": 2, "revenue": 250.0, "avg_ticket": 125.0},
+    {"channel": "Instagram (Organic)", "jobs": 1, "revenue": 200.0, "avg_ticket": 200.0}
+  ],
+  "weekly_trend": [
+    {"week": "Jul 13", "jobs": 2, "revenue": 295.0},
+    {"week": "Jul 20", "jobs": 13, "revenue": 2256.0},
+    {"week": "Jul 27", "jobs": 7, "revenue": 1025.0},
+    {"week": "Aug 03", "jobs": 6, "revenue": 965.0}
+  ],
+  "geo_breakdown": [
+    {"city": "Moreno Valley", "jobs": 7, "revenue": 1220.0},
+    {"city": "Riverside", "jobs": 5, "revenue": 915.0},
+    {"city": "Rancho Cucamonga", "jobs": 3, "revenue": 730.0},
+    {"city": "Colton", "jobs": 2, "revenue": 456.0},
+    {"city": "Jurupa Valley", "jobs": 3, "revenue": 330.0},
+    {"city": "Fontana", "jobs": 2, "revenue": 280.0},
+    {"city": "Eastvale", "jobs": 1, "revenue": 215.0},
+    {"city": "Magnolia Center", "jobs": 1, "revenue": 180.0},
+    {"city": "Corona", "jobs": 1, "revenue": 175.0},
+    {"city": "Highland", "jobs": 1, "revenue": 175.0},
+    {"city": "Hemet", "jobs": 1, "revenue": 170.0},
+    {"city": "Menifee", "jobs": 1, "revenue": 140.0},
+    {"city": "Beaumont", "jobs": 1, "revenue": 130.0},
+    {"city": "Redlands", "jobs": 1, "revenue": 120.0},
+    {"city": "Montclair", "jobs": 1, "revenue": 85.0}
+  ],
+  "moreno_valley_jobs": 7,
+  "moreno_valley_revenue": 1220.0,
+  "dow_pattern": [
+    {"day": "Mon", "jobs": 4, "revenue": 556.0},
+    {"day": "Tue", "jobs": 1, "revenue": 170.0},
+    {"day": "Wed", "jobs": 4, "revenue": 535.0},
+    {"day": "Thu", "jobs": 4, "revenue": 660.0},
+    {"day": "Fri", "jobs": 4, "revenue": 675.0},
+    {"day": "Sat", "jobs": 6, "revenue": 1325.0},
+    {"day": "Sun", "jobs": 5, "revenue": 620.0}
+  ],
+  "tier_mix": [
+    {"tier": "Premium", "jobs": 9, "revenue": 1945.0},
+    {"tier": "Standard", "jobs": 13, "revenue": 1671.0},
+    {"tier": "Pressure Wash", "jobs": 4, "revenue": 940.0},
+    {"tier": "Ceramic Coating", "jobs": 1, "revenue": 360.0},
+    {"tier": "Interior", "jobs": 3, "revenue": 345.0},
+    {"tier": "Maintenance", "jobs": 2, "revenue": 190.0},
+    {"tier": "Unspecified", "jobs": 1, "revenue": 140.0}
+  ],
+  "capacity_model": {
+    "current_combined_jobs_per_week": 8.5,
+    "avg_ticket_tracked_period": 162.18,
+    "moreno_valley_solo_jobs_per_week": [5.9, 8.5],
+    "san_diego_part_time_jobs_per_week": [1, 3],
+    "moreno_valley_solo_weekly_revenue": [956.86, 1378.53],
+    "san_diego_part_time_weekly_revenue": [162.18, 486.54]
+  }
+};
+
+const money = n => '$' + Number(n).toLocaleString('en-US', {maximumFractionDigits:0});
+const moneyRange = (a,b) => `${money(a)} – ${money(b)}`;
+
+// KPIs
+document.getElementById('k-revenue').textContent = money(METRICS.headline.total_revenue);
+document.getElementById('k-jobs').textContent = 33;
+document.getElementById('k-jobs-note').textContent = `of ${METRICS.headline.total_jobs} logged (incl. 2 non-detail side jobs)`;
+document.getElementById('k-avg').textContent = money(METRICS.headline.avg_ticket);
+document.getElementById('k-spend').textContent = money(METRICS.headline.total_ad_spend);
+document.getElementById('k-roas').textContent = METRICS.headline.meta_roas + 'x';
+document.getElementById('k-cpj').textContent = money(METRICS.headline.blended_cost_per_meta_job);
+
+// Ops panel
+const cap = METRICS.capacity_model;
+document.getElementById('mv-current').textContent = cap.current_combined_jobs_per_week + ' jobs/wk';
+document.getElementById('mv-capacity').textContent = cap.moreno_valley_solo_jobs_per_week[0] + '–' + cap.moreno_valley_solo_jobs_per_week[1] + ' jobs/wk';
+document.getElementById('mv-revenue').textContent = moneyRange(...cap.moreno_valley_solo_weekly_revenue);
+document.getElementById('sd-capacity').textContent = cap.san_diego_part_time_jobs_per_week[0] + '–' + cap.san_diego_part_time_jobs_per_week[1] + ' jobs/wk';
+document.getElementById('sd-revenue').textContent = moneyRange(...cap.san_diego_part_time_weekly_revenue);
+document.getElementById('verdict-pace').textContent = cap.current_combined_jobs_per_week;
+
+document.getElementById('dq-note').textContent = METRICS.data_quality_note;
+
+// Channel table
+const chTbody = document.querySelector('#channel-table tbody');
+const chColors = {'Meta Ads':'#4d8dff','D2D':'#3ecf8e','Facebook (Organic)':'#a48dff','Google':'#f5c542','Referral':'#ff5c7a','Instagram (Organic)':'#ff7a2f'};
+METRICS.channel_performance.forEach(c=>{
+  const pillClass = c.channel==='Meta Ads' ? 'meta' : (c.channel==='D2D' ? 'd2d' : 'other');
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><span class="pill ${pillClass}">${c.channel}</span></td><td>${c.jobs}</td><td>${money(c.revenue)}</td><td>${money(c.avg_ticket)}</td>`;
+  chTbody.appendChild(tr);
+});
+
+// Geo bars
+const geoWrap = document.getElementById('geo-bars');
+const maxGeo = Math.max(...METRICS.geo_breakdown.map(g=>g.revenue));
+METRICS.geo_breakdown.slice(0,8).forEach(g=>{
+  const pct = Math.round((g.revenue/maxGeo)*100);
+  const row = document.createElement('div');
+  row.className = 'bar-row';
+  row.innerHTML = `<div class="label">${g.city}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%; background:linear-gradient(90deg,#4d8dff,#3ecf8e);"></div></div><div class="val">${money(g.revenue)}</div>`;
+  geoWrap.appendChild(row);
+});
+
+const gridColor = 'rgba(255,255,255,0.06)';
+const textColor = '#9aa8c2';
+Chart.defaults.color = textColor;
+Chart.defaults.font.family = "'Segoe UI', system-ui, sans-serif";
+
+// Trend chart
+new Chart(document.getElementById('trendChart'), {
+  type:'line',
+  data:{
+    labels: METRICS.weekly_trend.map(w=>w.week),
+    datasets:[
+      {label:'Revenue ($)', data: METRICS.weekly_trend.map(w=>w.revenue), borderColor:'#ff7a2f', backgroundColor:'rgba(255,122,47,0.15)', fill:true, tension:0.35, yAxisID:'y'},
+      {label:'Jobs', data: METRICS.weekly_trend.map(w=>w.jobs), borderColor:'#3ecf8e', backgroundColor:'rgba(61,207,142,0.1)', fill:false, tension:0.35, yAxisID:'y1'}
+    ]
+  },
+  options:{
+    responsive:true,
+    interaction:{mode:'index', intersect:false},
+    scales:{
+      x:{grid:{color:gridColor}},
+      y:{position:'left', grid:{color:gridColor}, title:{display:true,text:'Revenue ($)'}},
+      y1:{position:'right', grid:{display:false}, title:{display:true,text:'Jobs'}}
+    },
+    plugins:{legend:{labels:{color:textColor}}}
+  }
+});
+
+// Channel chart
+new Chart(document.getElementById('channelChart'), {
+  type:'bar',
+  data:{
+    labels: METRICS.channel_performance.map(c=>c.channel),
+    datasets:[{
+      label:'Revenue',
+      data: METRICS.channel_performance.map(c=>c.revenue),
+      backgroundColor: METRICS.channel_performance.map(c=>chColors[c.channel]||'#9aa8c2'),
+      borderRadius:6
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false}},
+    scales:{ x:{grid:{display:false}}, y:{grid:{color:gridColor}} }
+  }
+});
+
+// Day of week chart
+new Chart(document.getElementById('dowChart'), {
+  type:'bar',
+  data:{
+    labels: METRICS.dow_pattern.map(d=>d.day),
+    datasets:[{label:'Jobs', data: METRICS.dow_pattern.map(d=>d.jobs), backgroundColor:'#4d8dff', borderRadius:6}]
+  },
+  options:{ responsive:true, plugins:{legend:{display:false}}, scales:{x:{grid:{display:false}}, y:{grid:{color:gridColor}}} }
+});
+
+// Tier chart
+new Chart(document.getElementById('tierChart'), {
+  type:'doughnut',
+  data:{
+    labels: METRICS.tier_mix.map(t=>t.tier),
+    datasets:[{
+      data: METRICS.tier_mix.map(t=>t.revenue),
+      backgroundColor:['#ff7a2f','#4d8dff','#3ecf8e','#f5c542','#a48dff','#ff5c7a','#9aa8c2']
+    }]
+  },
+  options:{ responsive:true, plugins:{legend:{position:'bottom', labels:{boxWidth:10, font:{size:11}}}} }
+});
+</script>
+
+</body>
+</html>

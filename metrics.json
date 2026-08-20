@@ -1,0 +1,248 @@
+{
+  "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
+  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change). Restricting to priced detail-service jobs yields 33 jobs, matching the source sheet's own '33 jobs' summary label exactly. The sheet's own TOTALS row ($5,561) doesn't fully reconcile with the sum of its own Total column ($5,591 on this basis) \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
+  "headline": {
+    "total_jobs": 35,
+    "total_detail_jobs": 33,
+    "total_revenue": 5591.0,
+    "avg_ticket": 169.42,
+    "total_ad_spend": 673.49,
+    "meta_revenue": 3135.0,
+    "meta_jobs": 18,
+    "meta_roas": 4.65,
+    "blended_cost_per_meta_job": 37.42
+  },
+  "channel_performance": [
+    {
+      "channel": "Meta Ads",
+      "jobs": 18,
+      "revenue": 3135.0,
+      "avg_ticket": 174.17
+    },
+    {
+      "channel": "D2D",
+      "jobs": 10,
+      "revenue": 1246.0,
+      "avg_ticket": 124.6
+    },
+    {
+      "channel": "Facebook (Organic)",
+      "jobs": 1,
+      "revenue": 400.0,
+      "avg_ticket": 400.0
+    },
+    {
+      "channel": "Google",
+      "jobs": 1,
+      "revenue": 360.0,
+      "avg_ticket": 360.0
+    },
+    {
+      "channel": "Referral",
+      "jobs": 2,
+      "revenue": 250.0,
+      "avg_ticket": 125.0
+    },
+    {
+      "channel": "Instagram (Organic)",
+      "jobs": 1,
+      "revenue": 200.0,
+      "avg_ticket": 200.0
+    }
+  ],
+  "weekly_trend": [
+    {
+      "week": "Jul 13",
+      "jobs": 2,
+      "revenue": 295.0
+    },
+    {
+      "week": "Jul 20",
+      "jobs": 13,
+      "revenue": 2256.0
+    },
+    {
+      "week": "Jul 27",
+      "jobs": 7,
+      "revenue": 1025.0
+    },
+    {
+      "week": "Aug 03",
+      "jobs": 6,
+      "revenue": 965.0
+    }
+  ],
+  "geo_breakdown": [
+    {
+      "city": "Moreno Valley",
+      "jobs": 7,
+      "revenue": 1220.0
+    },
+    {
+      "city": "Riverside",
+      "jobs": 5,
+      "revenue": 915.0
+    },
+    {
+      "city": "Rancho Cucamonga",
+      "jobs": 3,
+      "revenue": 730.0
+    },
+    {
+      "city": "Colton",
+      "jobs": 2,
+      "revenue": 456.0
+    },
+    {
+      "city": "Jurupa Valley",
+      "jobs": 3,
+      "revenue": 330.0
+    },
+    {
+      "city": "Fontana",
+      "jobs": 2,
+      "revenue": 280.0
+    },
+    {
+      "city": "Eastvale",
+      "jobs": 1,
+      "revenue": 215.0
+    },
+    {
+      "city": "Magnolia Center",
+      "jobs": 1,
+      "revenue": 180.0
+    },
+    {
+      "city": "Corona",
+      "jobs": 1,
+      "revenue": 175.0
+    },
+    {
+      "city": "Highland",
+      "jobs": 1,
+      "revenue": 175.0
+    },
+    {
+      "city": "Hemet",
+      "jobs": 1,
+      "revenue": 170.0
+    },
+    {
+      "city": "Menifee",
+      "jobs": 1,
+      "revenue": 140.0
+    },
+    {
+      "city": "Beaumont",
+      "jobs": 1,
+      "revenue": 130.0
+    },
+    {
+      "city": "Redlands",
+      "jobs": 1,
+      "revenue": 120.0
+    },
+    {
+      "city": "Montclair",
+      "jobs": 1,
+      "revenue": 85.0
+    }
+  ],
+  "moreno_valley_jobs": 7,
+  "moreno_valley_revenue": 1220.0,
+  "dow_pattern": [
+    {
+      "day": "Mon",
+      "jobs": 4,
+      "revenue": 556.0
+    },
+    {
+      "day": "Tue",
+      "jobs": 1,
+      "revenue": 170.0
+    },
+    {
+      "day": "Wed",
+      "jobs": 4,
+      "revenue": 535.0
+    },
+    {
+      "day": "Thu",
+      "jobs": 4,
+      "revenue": 660.0
+    },
+    {
+      "day": "Fri",
+      "jobs": 4,
+      "revenue": 675.0
+    },
+    {
+      "day": "Sat",
+      "jobs": 6,
+      "revenue": 1325.0
+    },
+    {
+      "day": "Sun",
+      "jobs": 5,
+      "revenue": 620.0
+    }
+  ],
+  "tier_mix": [
+    {
+      "tier": "Premium",
+      "jobs": 9,
+      "revenue": 1945.0
+    },
+    {
+      "tier": "Standard",
+      "jobs": 13,
+      "revenue": 1671.0
+    },
+    {
+      "tier": "Pressure Wash",
+      "jobs": 4,
+      "revenue": 940.0
+    },
+    {
+      "tier": "Ceramic Coating",
+      "jobs": 1,
+      "revenue": 360.0
+    },
+    {
+      "tier": "Interior",
+      "jobs": 3,
+      "revenue": 345.0
+    },
+    {
+      "tier": "Maintenance",
+      "jobs": 2,
+      "revenue": 190.0
+    },
+    {
+      "tier": "Unspecified",
+      "jobs": 1,
+      "revenue": 140.0
+    }
+  ],
+  "capacity_model": {
+    "current_combined_jobs_per_week": 8.5,
+    "avg_ticket_tracked_period": 162.18,
+    "moreno_valley_solo_jobs_per_week": [
+      5.9,
+      8.5
+    ],
+    "san_diego_part_time_jobs_per_week": [
+      1,
+      3
+    ],
+    "moreno_valley_solo_weekly_revenue": [
+      956.86,
+      1378.53
+    ],
+    "san_diego_part_time_weekly_revenue": [
+      162.18,
+      486.54
+    ]
+  }
+}
