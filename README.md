@@ -72,6 +72,17 @@ The full writeup, code, and plots are in `ad_campaign_statistical_analysis.ipynb
 - Both results directly informed a live campaign launched August 20, 2026, targeting women 45+ within a 10-15 mile service radius. Its real performance is being logged in `ceramic_coating_campaign_tracker.xlsx` as a genuine forward test of the notebook's conclusion — not just a backtest.
 - **A message isn't revenue — a booking is.** Section 6 tests a sharper question directly: does gender actually predict *booking*, not just messaging? Using real gender-tagged job data (`data/job_log_with_gender.csv`), the booking gender split (10 male / 8 female) was compared against the messaging gender split via 10,000 simulations under the null hypothesis of equal conversion rates. **Result: p ≈ 1.0 — no evidence the conversion rate differs by gender.** The cheaper-per-message finding for women (Section 4) does not carry through into who actually becomes a paying customer. This is the project's most important finding for how the account is actually run going forward: it stopped a plausible-sounding but unsupported assumption from turning into a real campaign decision, and reframed the live test around age instead.
 
+## Part 3: Maintenance Conversion Analysis
+
+A third, earlier piece of the same work — before ad ROI was the question, the first problem was retention. The business had booked 33 one-time jobs but only a handful of recurring maintenance customers. Full code, data, and figures are in `part3_maintenance_conversion/`.
+
+- **The leak isn't rejection, it's silence.** Of 24 maintenance candidates pitched, 46% never responded at all — not a "no," just nothing. That reframes the fix: the priority is a follow-up cadence that forces a real yes/no, not a better pitch script.
+- **Acquisition channel predicts loyalty, inverted from what you'd expect.** D2D converts to recurring maintenance at 29% (n=7) vs. Meta Ads' 20% (n=15), despite Meta Ads customers paying more per job on average ($186 vs $129).
+- **But that gap is not yet statistically distinguishable from chance.** A permutation test (10,000 resamples, same method as Part 2) returns **p = 1.000**. With only 7 D2D candidates pitched so far, the observed 8.6-point gap is actually the *smallest* possible non-zero outcome the data could produce — nearly every random relabeling produces a gap at least as large by chance alone.
+- **A real power calculation, not a guess, on what it would take to prove this**: at current observed rates, detecting this gap at 95% confidence / 80% power would need **~389 pitched candidates per channel** — D2D would need **56x** its current sample. That's a real target to track as the maintenance program scales, not something achievable soon at current volume. The script recalculates this figure every run, so it's a live number that should shrink as real data accumulates.
+
+Run it: `cd part3_maintenance_conversion/notebooks && python3 analysis.py`
+
 ## Possible next steps
 
 - Tag ad campaigns with UTM parameters or campaign IDs that map directly to job-log entries, so ROAS can be computed per-campaign instead of per-channel.

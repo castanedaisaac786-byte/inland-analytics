@@ -1,0 +1,32 @@
+customer_id,city,last_service,interval_wks,status,notes
+C10,Colton,2026-07-20,2,active_self_requested,Requested own 2-3wk interval
+C05,Riverside,2026-07-15,3,pending_positive,"Wants maintenance + detail on 2nd car, needs date"
+C03,Rancho Cucamonga,2026-07-10,4,self_sufficient,"Son washes it, car in good shape"
+C04,Hemet,2026-07-13,4,declined,
+C07,Highland,2026-07-18,4,declined,
+C08,Redlands,2026-07-19,4,declined,
+C09,Riverside,2026-07-20,4,declined,
+C11,Rancho Cucamonga,2026-07-21,4,unresponsive,
+C12,Fontana,2026-07-22,4,pending_positive,Est. early September
+C13,N/A,2026-07-23,4,unresponsive,
+C14,N/A,2026-07-23,4,no_contact_info,
+C15,Riverside,2026-07-23,4,unresponsive,
+C34,Riverside,2026-07-24,4,declined,"Failed to convert, delaying, no date"
+C16,Eastvale,2026-07-24,4,unresponsive,
+C17,Riverside,2026-07-24,4,unresponsive,
+C18,Moreno Valley,2026-07-25,4,unresponsive,
+C19,Moreno Valley,2026-07-25,4,declined,
+C20,Moreno Valley,2026-07-26,4,unresponsive,
+C21,Jurupa Valley,2026-07-26,4,unresponsive,
+C22,Jurupa Valley,2026-07-27,4,unresponsive,
+C23,Jurupa Valley,2026-07-27,4,no_contact_info,
+C24,Menifee,2026-07-29,4,confirmed,Confirmed Sep 21
+C25,Montclair,2026-07-29,4,declined,
+C26,Colton,2026-08-01,4,pending_positive,"Wants maintenance, needs date"
+C27,Beaumont,2026-08-01,4,too_early,Warmth: unsure
+C28,Moreno Valley,2026-08-02,4,too_early,Warmth: very warm
+C29,Moreno Valley,2026-08-05,4,too_early,Warmth: very warm
+C30,Corona,2026-08-06,4,too_early,Warmth: unsure
+C01,Riverside,2026-08-07,4,too_early,Warmth: very warm
+C31,Moreno Valley,2026-08-07,4,too_early,Warmth: very warm
+C33,Fontana,2026-08-08,4,too_early,"Warmth: warm, wants next detail at work"
