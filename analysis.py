@@ -91,6 +91,22 @@ weekly = (
     .reset_index()
     .sort_values("week_start")
 )
+
+# Continuous week range so a paused week shows up as a real $0 bar
+# instead of silently disappearing from the trend line.
+range_end = max(tracked["date"].max(), pd.Timestamp.today())
+full_weeks = pd.period_range(
+    start=tracked["week_start"].min(),
+    end=pd.Timestamp(range_end).to_period("W-SUN").start_time,
+    freq="W-SUN",
+).start_time
+weekly = (
+    weekly.set_index("week_start")
+    .reindex(full_weeks, fill_value=0)
+    .rename_axis("week_start")
+    .reset_index()
+)
+
 weekly_trend = [
     {"week": row["week_start"].strftime("%b %d"), "jobs": int(row["jobs"]), "revenue": round(float(row["revenue"]), 2)}
     for _, row in weekly.iterrows()
@@ -148,37 +164,6 @@ tier_mix = [
 ]
 
 # ---------------------------------------------------------------------------
-# Two-location capacity model
-# ---------------------------------------------------------------------------
-# Current combined throughput (both operators, tracked period, Inland Empire only)
-avg_ticket_tracked = round(float(tracked["total_clean"].mean()), 2)
-
-# Moreno Valley / Inland Empire (Sam, full-time solo): assume he can sustain
-# roughly the current combined pace on his own once he's the only full-time
-# operator on the ground — realistically 70-100% of current combined volume,
-# since current volume was already produced without a second full-time market
-# to split attention with.
-sam_solo_low = round(jobs_per_week_current * 0.7, 1)
-sam_solo_high = jobs_per_week_current
-
-# San Diego (Isaac, ~1 day/week around school): a brand-new market with zero
-# existing customer base, reviews, or referral network, worked one day a week.
-# Assume 1 job slot per available hour block on that single day; realistic
-# early capacity is 1-3 jobs on the day worked, before drive time and
-# same-day-only scheduling friction.
-sd_solo_low = 1
-sd_solo_high = 3
-
-capacity_model = {
-    "current_combined_jobs_per_week": jobs_per_week_current,
-    "avg_ticket_tracked_period": avg_ticket_tracked,
-    "moreno_valley_solo_jobs_per_week": [sam_solo_low, sam_solo_high],
-    "san_diego_part_time_jobs_per_week": [sd_solo_low, sd_solo_high],
-    "moreno_valley_solo_weekly_revenue": [round(sam_solo_low * avg_ticket_tracked, 2), round(sam_solo_high * avg_ticket_tracked, 2)],
-    "san_diego_part_time_weekly_revenue": [round(sd_solo_low * avg_ticket_tracked, 2), round(sd_solo_high * avg_ticket_tracked, 2)],
-}
-
-# ---------------------------------------------------------------------------
 # Assemble metrics.json
 # ---------------------------------------------------------------------------
 metrics = {
@@ -210,7 +195,6 @@ metrics = {
     "moreno_valley_revenue": round(moreno_valley_revenue, 2),
     "dow_pattern": dow_pattern,
     "tier_mix": tier_mix,
-    "capacity_model": capacity_model,
 }
 
 with open("metrics.json", "w") as f:

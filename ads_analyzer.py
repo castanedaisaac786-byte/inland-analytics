@@ -56,14 +56,21 @@ def analyzer(df):
     print()
     top2 = ranked.head(2)
     rest = ranked.iloc[2:]
+    cpm_corr = df[["cpm", "messages_per_1k_impr"]].corr().iloc[0, 1]
     print("Headline finding:")
     print(f"  Top 2 campaigns average {top2['messages_per_1k_impr'].mean():.1f} messages/1k impressions.")
     print(f"  Everything else averages {rest['messages_per_1k_impr'].mean():.1f} messages/1k impressions.")
     print(f"  That's a {top2['messages_per_1k_impr'].mean() / max(rest['messages_per_1k_impr'].mean(), 0.01):.1f}x gap.")
-    print(f"  Those same top 2 also have the 2 lowest CPMs in the whole dataset (${top2['cpm'].min():.2f}-${top2['cpm'].max():.2f}")
-    print(f"  vs a dataset average of ${df['cpm'].mean():.2f}). That's not a coincidence: Meta's auction rewards")
-    print(f"  ads people actually engage with by charging them less per impression. A creative that resonates")
-    print(f"  pays for itself twice - cheaper reach AND a higher hit rate on that reach.")
+    if cpm_corr < -0.2:
+        print(f"  The top performers also have low CPMs relative to the dataset (r={cpm_corr:+.2f}) -")
+        print(f"  consistent with Meta's auction rewarding ads people actually engage with.")
+    elif cpm_corr > 0.2:
+        print(f"  CPM is NOT the driver here (r={cpm_corr:+.2f}, higher CPM associated with MORE messages/1k,")
+        print(f"  the opposite of the cheap-reach story). With only {len(df)} campaigns this could easily be")
+        print(f"  noise or reverse causation (Meta may have raised CPM because these were performing well) -")
+        print(f"  don't repeat this as a rule without a larger sample.")
+    else:
+        print(f"  CPM shows no meaningful relationship to message rate here (r={cpm_corr:+.2f}).")
 
 
 def predictor(df, planned_spend, like_campaign):
@@ -95,5 +102,7 @@ def predictor(df, planned_spend, like_campaign):
 if __name__ == "__main__":
     df = load()
     analyzer(df)
-    # Example: planning a $75 ceramic-coating campaign, modeled on the best past creative
-    predictor(df, planned_spend=75.0, like_campaign="Turning a side (Instagram)")
+    # Example: planning a $75 ceramic-coating campaign, modeled on the best CONFIRMED
+    # messages-objective creative (Turning a side / Algae v2 were excluded from this
+    # dataset - they were Profile Visits / Post Engagements campaigns, not Messages)
+    predictor(df, planned_spend=75.0, like_campaign="New Engagement Campaign #1")

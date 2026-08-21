@@ -7,17 +7,17 @@
     "total_revenue": 5591.0,
     "avg_ticket": 169.42,
     "total_ad_spend": 673.49,
-    "meta_revenue": 3135.0,
-    "meta_jobs": 18,
-    "meta_roas": 4.65,
-    "blended_cost_per_meta_job": 37.42
+    "meta_revenue": 3495.0,
+    "meta_jobs": 19,
+    "meta_roas": 5.19,
+    "blended_cost_per_meta_job": 35.45
   },
   "channel_performance": [
     {
       "channel": "Meta Ads",
-      "jobs": 18,
-      "revenue": 3135.0,
-      "avg_ticket": 174.17
+      "jobs": 19,
+      "revenue": 3495.0,
+      "avg_ticket": 183.95
     },
     {
       "channel": "D2D",
@@ -30,12 +30,6 @@
       "jobs": 1,
       "revenue": 400.0,
       "avg_ticket": 400.0
-    },
-    {
-      "channel": "Google",
-      "jobs": 1,
-      "revenue": 360.0,
-      "avg_ticket": 360.0
     },
     {
       "channel": "Referral",
@@ -70,6 +64,16 @@
       "week": "Aug 03",
       "jobs": 6,
       "revenue": 965.0
+    },
+    {
+      "week": "Aug 10",
+      "jobs": 0,
+      "revenue": 0.0
+    },
+    {
+      "week": "Aug 17",
+      "jobs": 0,
+      "revenue": 0.0
     }
   ],
   "geo_breakdown": [
@@ -224,25 +228,5 @@
       "jobs": 1,
       "revenue": 140.0
     }
-  ],
-  "capacity_model": {
-    "current_combined_jobs_per_week": 8.5,
-    "avg_ticket_tracked_period": 162.18,
-    "moreno_valley_solo_jobs_per_week": [
-      5.9,
-      8.5
-    ],
-    "san_diego_part_time_jobs_per_week": [
-      1,
-      3
-    ],
-    "moreno_valley_solo_weekly_revenue": [
-      956.86,
-      1378.53
-    ],
-    "san_diego_part_time_weekly_revenue": [
-      162.18,
-      486.54
-    ]
-  }
+  ]
 }

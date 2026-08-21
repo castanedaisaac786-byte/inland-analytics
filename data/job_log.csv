@@ -25,7 +25,7 @@ date,day_of_week,time_of_day,customer,city,service,package_tier,vehicles,channel
 7/27/2026,Mon,,Celia,Jurupa Valley,SUV Maintenance Wash,Maintenance,1,D2D,70,,70,tracked,1,
 7/27/2026,Mon,,Celia's Neighbor,Jurupa Valley,Standard Detail (SUV),Standard,1,D2D,120,20,140,tracked,1,
 7/29/2026,Wed,,Miguel,Montclair,Interior Detail (Sedan),Interior,1,Meta Ads,75,10,85,tracked,1,
-8/1/2026,Sat,,Duene,Colton,Ceramic Coating,Ceramic Coating,1,Google,350,10,360,tracked,1,
+8/1/2026,Sat,,Duene,Colton,Ceramic Coating,Ceramic Coating,1,Meta Ads,350,10,360,tracked,1,
 8/1/2026,Sat,,Nanette,Beaumont,Interior Detail (Truck),Interior,1,Meta Ads,90,40,130,tracked,1,
 8/2/2026,Sun,,Diaz (Coach),Moreno Valley,2x Standard (Truck + Sedan),Standard,2,Referral,100,,100,tracked,1,Personal connection referral
 8/5/2026,Wed,,Jasmine,Moreno Valley,Standard Detail (SUV),Standard,1,Meta Ads,150,30,180,tracked,1,

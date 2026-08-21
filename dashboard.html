@@ -159,55 +159,6 @@
   </section>
 
   <section>
-    <div class="ops-panel">
-      <h2>🚗 Two-Location Expansion Plan: San Diego + Moreno Valley</h2>
-      <div class="lede">
-        The core question: with Isaac full-time in school in San Diego (~1 day/week available) and Samuel full-time
-        in Moreno Valley, can the business run two markets and two ad campaigns at once without either one
-        cracking? The model below is built off the actual current throughput in the job log — not a guess.
-      </div>
-
-      <div class="scenario-grid">
-        <div class="scenario">
-          <div class="loc mv">Moreno Valley / Inland Empire — Samuel, full-time</div>
-          <h4>Stays the core of the business</h4>
-          <div class="stat"><span>Current combined pace</span><b id="mv-current">–</b></div>
-          <div class="stat"><span>Solo-operator capacity</span><b id="mv-capacity">–</b></div>
-          <div class="stat"><span>Projected weekly revenue</span><b id="mv-revenue">–</b></div>
-          <div class="stat"><span>Ad budget recommendation</span><b>~80% of total spend</b></div>
-        </div>
-        <div class="scenario">
-          <div class="loc sd">San Diego — Isaac, ~1 day/week</div>
-          <h4>Treat as a pilot, not a second HQ</h4>
-          <div class="stat"><span>Existing customer base</span><b>None</b></div>
-          <div class="stat"><span>Realistic early capacity</span><b id="sd-capacity">–</b></div>
-          <div class="stat"><span>Projected weekly revenue</span><b id="sd-revenue">–</b></div>
-          <div class="stat"><span>Ad budget recommendation</span><b>~20% of total spend, geo-fenced</b></div>
-        </div>
-      </div>
-
-      <div class="verdict">
-        <b>Verdict: split is workable, but only if Moreno Valley stays the priority and San Diego is run as a
-        low-stakes pilot, not a parallel full launch.</b>
-        The job log shows the business currently produces about
-        <b id="verdict-pace">–</b> jobs/week combined — that pace was hit without a second market
-        pulling attention. Handing Moreno Valley to Samuel full-time should hold or grow that number. San Diego
-        starts at zero: no reviews, no referral network, and only one working day a week, so 1–3 jobs/week is the
-        honest early ceiling, not a shortfall. Running one shared Meta Ads account with two geo-targeted campaigns
-        (rather than doubling total spend) lets the data show which market actually responds before committing
-        more budget or more of Isaac's limited time to San Diego.
-      </div>
-
-      <div class="roadmap">
-        <div class="step"><div class="phase">Weeks 1–4</div><p>Samuel runs Moreno Valley solo. Isaac launches one geo-targeted San Diego Meta campaign, works it the one available day. Keep spend ~80/20 MV/SD.</p></div>
-        <div class="step"><div class="phase">Weeks 5–8</div><p>Compare cost-per-job and ROAS between the two geo campaigns using this same dashboard. Kill or double down on San Diego based on the number, not the hope.</p></div>
-        <div class="step"><div class="phase">Weeks 9–12</div><p>If San Diego ROAS ≥ Moreno Valley's, shift more spend and consider a second weekly day. If it's below, hold San Diego flat and let Moreno Valley absorb the growth.</p></div>
-        <div class="step"><div class="phase">Ongoing</div><p>Re-run <code style="color:#ff7a2f">analysis.py</code> against the updated job log every few weeks to refresh this dashboard and re-check the split.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
     <div class="section-title"><h2>Data Quality Note</h2></div>
     <div class="card" id="dq-note" style="font-size:13px; color:var(--muted); line-height:1.6;"></div>
   </section>
@@ -230,16 +181,15 @@ const METRICS = {
     "total_revenue": 5591.0,
     "avg_ticket": 169.42,
     "total_ad_spend": 673.49,
-    "meta_revenue": 3135.0,
-    "meta_jobs": 18,
-    "meta_roas": 4.65,
-    "blended_cost_per_meta_job": 37.42
+    "meta_revenue": 3495.0,
+    "meta_jobs": 19,
+    "meta_roas": 5.19,
+    "blended_cost_per_meta_job": 35.45
   },
   "channel_performance": [
-    {"channel": "Meta Ads", "jobs": 18, "revenue": 3135.0, "avg_ticket": 174.17},
+    {"channel": "Meta Ads", "jobs": 19, "revenue": 3495.0, "avg_ticket": 183.95},
     {"channel": "D2D", "jobs": 10, "revenue": 1246.0, "avg_ticket": 124.6},
     {"channel": "Facebook (Organic)", "jobs": 1, "revenue": 400.0, "avg_ticket": 400.0},
-    {"channel": "Google", "jobs": 1, "revenue": 360.0, "avg_ticket": 360.0},
     {"channel": "Referral", "jobs": 2, "revenue": 250.0, "avg_ticket": 125.0},
     {"channel": "Instagram (Organic)", "jobs": 1, "revenue": 200.0, "avg_ticket": 200.0}
   ],
@@ -247,7 +197,9 @@ const METRICS = {
     {"week": "Jul 13", "jobs": 2, "revenue": 295.0},
     {"week": "Jul 20", "jobs": 13, "revenue": 2256.0},
     {"week": "Jul 27", "jobs": 7, "revenue": 1025.0},
-    {"week": "Aug 03", "jobs": 6, "revenue": 965.0}
+    {"week": "Aug 03", "jobs": 6, "revenue": 965.0},
+    {"week": "Aug 10", "jobs": 0, "revenue": 0.0},
+    {"week": "Aug 17", "jobs": 0, "revenue": 0.0}
   ],
   "geo_breakdown": [
     {"city": "Moreno Valley", "jobs": 7, "revenue": 1220.0},
@@ -285,15 +237,7 @@ const METRICS = {
     {"tier": "Interior", "jobs": 3, "revenue": 345.0},
     {"tier": "Maintenance", "jobs": 2, "revenue": 190.0},
     {"tier": "Unspecified", "jobs": 1, "revenue": 140.0}
-  ],
-  "capacity_model": {
-    "current_combined_jobs_per_week": 8.5,
-    "avg_ticket_tracked_period": 162.18,
-    "moreno_valley_solo_jobs_per_week": [5.9, 8.5],
-    "san_diego_part_time_jobs_per_week": [1, 3],
-    "moreno_valley_solo_weekly_revenue": [956.86, 1378.53],
-    "san_diego_part_time_weekly_revenue": [162.18, 486.54]
-  }
+  ]
 };
 
 const money = n => '$' + Number(n).toLocaleString('en-US', {maximumFractionDigits:0});
@@ -308,20 +252,13 @@ document.getElementById('k-spend').textContent = money(METRICS.headline.total_ad
 document.getElementById('k-roas').textContent = METRICS.headline.meta_roas + 'x';
 document.getElementById('k-cpj').textContent = money(METRICS.headline.blended_cost_per_meta_job);
 
-// Ops panel
-const cap = METRICS.capacity_model;
-document.getElementById('mv-current').textContent = cap.current_combined_jobs_per_week + ' jobs/wk';
-document.getElementById('mv-capacity').textContent = cap.moreno_valley_solo_jobs_per_week[0] + '–' + cap.moreno_valley_solo_jobs_per_week[1] + ' jobs/wk';
-document.getElementById('mv-revenue').textContent = moneyRange(...cap.moreno_valley_solo_weekly_revenue);
-document.getElementById('sd-capacity').textContent = cap.san_diego_part_time_jobs_per_week[0] + '–' + cap.san_diego_part_time_jobs_per_week[1] + ' jobs/wk';
-document.getElementById('sd-revenue').textContent = moneyRange(...cap.san_diego_part_time_weekly_revenue);
-document.getElementById('verdict-pace').textContent = cap.current_combined_jobs_per_week;
+
 
 document.getElementById('dq-note').textContent = METRICS.data_quality_note;
 
 // Channel table
 const chTbody = document.querySelector('#channel-table tbody');
-const chColors = {'Meta Ads':'#4d8dff','D2D':'#3ecf8e','Facebook (Organic)':'#a48dff','Google':'#f5c542','Referral':'#ff5c7a','Instagram (Organic)':'#ff7a2f'};
+const chColors = {'Meta Ads':'#4d8dff','D2D':'#3ecf8e','Facebook (Organic)':'#a48dff','Referral':'#ff5c7a','Instagram (Organic)':'#ff7a2f'};
 METRICS.channel_performance.forEach(c=>{
   const pillClass = c.channel==='Meta Ads' ? 'meta' : (c.channel==='D2D' ? 'd2d' : 'other');
   const tr = document.createElement('tr');

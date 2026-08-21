@@ -25,7 +25,7 @@ date,customer,city,service,package_tier,vehicles,acquisition_channel,job_value,t
 07/27/2026,Celia,Jurupa Valley,SUV Maintenance Wash,Maintenance,1,D2D,70,,70,,Female
 07/27/2026,Celia's Neighbor,Jurupa Valley,Standard Detail (SUV),Standard,1,D2D,120,20,140,,Male
 07/29/2026,Miguel,Montclair,Interior Detail (Sedan),Interior,1,Meta Ads,75,10,85,,Male
-08/01/2026,Duene,Colton,Ceramic Coating,Ceramic Coating,1,Google,350,10,360,,Male
+08/01/2026,Duene,Colton,Ceramic Coating,Ceramic Coating,1,Meta Ads,350,10,360,,Male
 08/01/2026,Nanette,Beaumont,Interior Detail (Truck),Interior,1,Meta Ads,90,40,130,,Female
 08/02/2026,Diaz (Coach),Moreno Valley,2x Standard (Truck + Sedan),Standard,2,Referral,100,,100,Personal connection referral,Male
 08/05/2026,Jasmine,Moreno Valley,Standard Detail (SUV),Standard,1,Meta Ads,150,30,180,,Female
