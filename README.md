@@ -20,7 +20,8 @@ inland-analytics/
 │   ├── meta_ads_detailed_report.xlsx  # raw Meta export: 614 day/age/gender/campaign rows, Jan-Aug 2026
 │   ├── messaging_only_raw.csv         # filtered to Result Type = "Messaging conversations started" (117 rows)
 │   ├── messages_by_campaign.csv       # aggregated cost-per-message by campaign
-│   └── messages_by_demo.csv           # aggregated cost-per-message by age x gender
+│   ├── messages_by_demo.csv           # aggregated cost-per-message by age x gender
+│   └── job_log_with_gender.csv        # 35 logged jobs with gender tagged, for Part 2 Section 6
 ├── analysis.py                         # Part 1: pandas script, cleans data, computes every metric
 ├── metrics.json                        # output of analysis.py — source of truth for the dashboard
 ├── dashboard.html                      # Part 1: self-contained interactive dashboard (Chart.js)
@@ -69,6 +70,7 @@ The full writeup, code, and plots are in `ad_campaign_statistical_analysis.ipynb
 - Female audiences showed a $1.50/message rate vs. $2.36 for male — a **permutation test (10,000 resamples) puts this at p ≈ 0.0005**, i.e., a gap this large essentially never appears when the gender labels are shuffled at random.
 - Age 55+ showed $1.53/message vs. $2.35 for under-55 — **p ≈ 0.0015** by the same method.
 - Both results directly informed a live campaign launched August 20, 2026, targeting women 45+ within a 10-15 mile service radius. Its real performance is being logged in `ceramic_coating_campaign_tracker.xlsx` as a genuine forward test of the notebook's conclusion — not just a backtest.
+- **A message isn't revenue — a booking is.** Section 6 tests a sharper question directly: does gender actually predict *booking*, not just messaging? Using real gender-tagged job data (`data/job_log_with_gender.csv`), the booking gender split (10 male / 8 female) was compared against the messaging gender split via 10,000 simulations under the null hypothesis of equal conversion rates. **Result: p ≈ 1.0 — no evidence the conversion rate differs by gender.** The cheaper-per-message finding for women (Section 4) does not carry through into who actually becomes a paying customer. This is the project's most important finding for how the account is actually run going forward: it stopped a plausible-sounding but unsupported assumption from turning into a real campaign decision, and reframed the live test around age instead.
 
 ## Possible next steps
 
