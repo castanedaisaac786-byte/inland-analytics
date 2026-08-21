@@ -95,7 +95,7 @@
 <header>
   <div class="eyebrow">Inland Auto Detailing · Data Project</div>
   <h1>Growth &amp; Ad Performance Dashboard</h1>
-  <div class="sub">Job-level revenue, acquisition-channel ROAS, and a two-location capacity model — built from the business's own job log and Meta Ads Manager export to plan the San Diego / Moreno Valley expansion and the next ad campaign.</div>
+  <div class="sub">Job-level revenue, acquisition-channel ROAS, and demand patterns by channel, day, and city — built from the business's own job log and Meta Ads Manager export to guide the next ad campaign.</div>
   <div class="meta-row">
     <span>Data window: <b>Jun 14 – Aug 9, 2026</b></span>
     <span>Source: <b>INLAND TRACKER job log + Meta Ads Manager (lifetime export)</b></span>
@@ -106,7 +106,7 @@
 <main>
 
   <section>
-    <div class="section-title"><h2>Headline Numbers</h2><span class="tag">33 billable detail jobs</span></div>
+    <div class="section-title"><h2>Headline Numbers</h2><span class="tag" id="k-tag">– billable detail jobs</span></div>
     <div class="kpi-grid">
       <div class="kpi"><div class="label">Total Revenue</div><div class="value" id="k-revenue">–</div><div class="note">Detail jobs, priced</div></div>
       <div class="kpi"><div class="label">Jobs Completed</div><div class="value" id="k-jobs">–</div><div class="note" id="k-jobs-note">–</div></div>
@@ -174,79 +174,223 @@
 <script>
 const METRICS = {
   "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
-  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change). Restricting to priced detail-service jobs yields 33 jobs, matching the source sheet's own '33 jobs' summary label exactly. The sheet's own TOTALS row ($5,561) doesn't fully reconcile with the sum of its own Total column ($5,591 on this basis) — likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
+  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change) and 4 pressure-wash jobs, reclassified as non-detail since exterior/patio pressure washing is not a vehicle-detailing service. Restricting to priced, vehicle-detail-service jobs yields 29 jobs \u2014 fewer than the source sheet's own '33 jobs' label, since that label originally counted pressure-washing as a detail service; this analysis defines 'detail' more narrowly on purpose. The sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum of its own Total column on the original basis \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
   "headline": {
     "total_jobs": 35,
-    "total_detail_jobs": 33,
-    "total_revenue": 5591.0,
-    "avg_ticket": 169.42,
+    "total_detail_jobs": 29,
+    "total_revenue": 4721.0,
+    "avg_ticket": 162.79,
     "total_ad_spend": 673.49,
-    "meta_revenue": 3495.0,
+    "meta_revenue": 3525.0,
     "meta_jobs": 19,
-    "meta_roas": 5.19,
+    "meta_roas": 5.23,
     "blended_cost_per_meta_job": 35.45
   },
   "channel_performance": [
-    {"channel": "Meta Ads", "jobs": 19, "revenue": 3495.0, "avg_ticket": 183.95},
-    {"channel": "D2D", "jobs": 10, "revenue": 1246.0, "avg_ticket": 124.6},
-    {"channel": "Facebook (Organic)", "jobs": 1, "revenue": 400.0, "avg_ticket": 400.0},
-    {"channel": "Referral", "jobs": 2, "revenue": 250.0, "avg_ticket": 125.0},
-    {"channel": "Instagram (Organic)", "jobs": 1, "revenue": 200.0, "avg_ticket": 200.0}
+    {
+      "channel": "Meta Ads",
+      "jobs": 19,
+      "revenue": 3525.0,
+      "avg_ticket": 185.53
+    },
+    {
+      "channel": "D2D",
+      "jobs": 8,
+      "revenue": 946.0,
+      "avg_ticket": 118.25
+    },
+    {
+      "channel": "Referral",
+      "jobs": 2,
+      "revenue": 250.0,
+      "avg_ticket": 125.0
+    }
   ],
   "weekly_trend": [
-    {"week": "Jul 13", "jobs": 2, "revenue": 295.0},
-    {"week": "Jul 20", "jobs": 13, "revenue": 2256.0},
-    {"week": "Jul 27", "jobs": 7, "revenue": 1025.0},
-    {"week": "Aug 03", "jobs": 6, "revenue": 965.0},
-    {"week": "Aug 10", "jobs": 0, "revenue": 0.0},
-    {"week": "Aug 17", "jobs": 0, "revenue": 0.0}
+    {
+      "week": "Jul 13",
+      "jobs": 2,
+      "revenue": 295.0
+    },
+    {
+      "week": "Jul 20",
+      "jobs": 13,
+      "revenue": 2256.0
+    },
+    {
+      "week": "Jul 27",
+      "jobs": 7,
+      "revenue": 1025.0
+    },
+    {
+      "week": "Aug 03",
+      "jobs": 5,
+      "revenue": 835.0
+    },
+    {
+      "week": "Aug 10",
+      "jobs": 0,
+      "revenue": 0.0
+    },
+    {
+      "week": "Aug 17",
+      "jobs": 0,
+      "revenue": 0.0
+    }
   ],
   "geo_breakdown": [
-    {"city": "Moreno Valley", "jobs": 7, "revenue": 1220.0},
-    {"city": "Riverside", "jobs": 5, "revenue": 915.0},
-    {"city": "Rancho Cucamonga", "jobs": 3, "revenue": 730.0},
-    {"city": "Colton", "jobs": 2, "revenue": 456.0},
-    {"city": "Jurupa Valley", "jobs": 3, "revenue": 330.0},
-    {"city": "Fontana", "jobs": 2, "revenue": 280.0},
-    {"city": "Eastvale", "jobs": 1, "revenue": 215.0},
-    {"city": "Magnolia Center", "jobs": 1, "revenue": 180.0},
-    {"city": "Corona", "jobs": 1, "revenue": 175.0},
-    {"city": "Highland", "jobs": 1, "revenue": 175.0},
-    {"city": "Hemet", "jobs": 1, "revenue": 170.0},
-    {"city": "Menifee", "jobs": 1, "revenue": 140.0},
-    {"city": "Beaumont", "jobs": 1, "revenue": 130.0},
-    {"city": "Redlands", "jobs": 1, "revenue": 120.0},
-    {"city": "Montclair", "jobs": 1, "revenue": 85.0}
+    {
+      "city": "Moreno Valley",
+      "jobs": 6,
+      "revenue": 1020.0
+    },
+    {
+      "city": "Riverside",
+      "jobs": 5,
+      "revenue": 955.0
+    },
+    {
+      "city": "Colton",
+      "jobs": 2,
+      "revenue": 456.0
+    },
+    {
+      "city": "Jurupa Valley",
+      "jobs": 3,
+      "revenue": 330.0
+    },
+    {
+      "city": "Fontana",
+      "jobs": 2,
+      "revenue": 310.0
+    },
+    {
+      "city": "Eastvale",
+      "jobs": 1,
+      "revenue": 215.0
+    },
+    {
+      "city": "Corona",
+      "jobs": 1,
+      "revenue": 175.0
+    },
+    {
+      "city": "Highland",
+      "jobs": 1,
+      "revenue": 175.0
+    },
+    {
+      "city": "Hemet",
+      "jobs": 1,
+      "revenue": 170.0
+    },
+    {
+      "city": "Rancho Cucamonga",
+      "jobs": 1,
+      "revenue": 170.0
+    },
+    {
+      "city": "Menifee",
+      "jobs": 1,
+      "revenue": 140.0
+    },
+    {
+      "city": "Beaumont",
+      "jobs": 1,
+      "revenue": 130.0
+    },
+    {
+      "city": "Redlands",
+      "jobs": 1,
+      "revenue": 120.0
+    },
+    {
+      "city": "Montclair",
+      "jobs": 1,
+      "revenue": 85.0
+    }
   ],
-  "moreno_valley_jobs": 7,
-  "moreno_valley_revenue": 1220.0,
+  "moreno_valley_jobs": 6,
+  "moreno_valley_revenue": 1020.0,
   "dow_pattern": [
-    {"day": "Mon", "jobs": 4, "revenue": 556.0},
-    {"day": "Tue", "jobs": 1, "revenue": 170.0},
-    {"day": "Wed", "jobs": 4, "revenue": 535.0},
-    {"day": "Thu", "jobs": 4, "revenue": 660.0},
-    {"day": "Fri", "jobs": 4, "revenue": 675.0},
-    {"day": "Sat", "jobs": 6, "revenue": 1325.0},
-    {"day": "Sun", "jobs": 5, "revenue": 620.0}
+    {
+      "day": "Mon",
+      "jobs": 4,
+      "revenue": 556.0
+    },
+    {
+      "day": "Tue",
+      "jobs": 1,
+      "revenue": 170.0
+    },
+    {
+      "day": "Wed",
+      "jobs": 4,
+      "revenue": 535.0
+    },
+    {
+      "day": "Thu",
+      "jobs": 4,
+      "revenue": 660.0
+    },
+    {
+      "day": "Fri",
+      "jobs": 4,
+      "revenue": 715.0
+    },
+    {
+      "day": "Sat",
+      "jobs": 5,
+      "revenue": 1125.0
+    },
+    {
+      "day": "Sun",
+      "jobs": 5,
+      "revenue": 650.0
+    }
   ],
   "tier_mix": [
-    {"tier": "Premium", "jobs": 9, "revenue": 1945.0},
-    {"tier": "Standard", "jobs": 13, "revenue": 1671.0},
-    {"tier": "Pressure Wash", "jobs": 4, "revenue": 940.0},
-    {"tier": "Ceramic Coating", "jobs": 1, "revenue": 360.0},
-    {"tier": "Interior", "jobs": 3, "revenue": 345.0},
-    {"tier": "Maintenance", "jobs": 2, "revenue": 190.0},
-    {"tier": "Unspecified", "jobs": 1, "revenue": 140.0}
+    {
+      "tier": "Premium",
+      "jobs": 9,
+      "revenue": 1945.0
+    },
+    {
+      "tier": "Standard",
+      "jobs": 13,
+      "revenue": 1741.0
+    },
+    {
+      "tier": "Ceramic Coating",
+      "jobs": 1,
+      "revenue": 360.0
+    },
+    {
+      "tier": "Interior",
+      "jobs": 3,
+      "revenue": 345.0
+    },
+    {
+      "tier": "Maintenance",
+      "jobs": 2,
+      "revenue": 190.0
+    },
+    {
+      "tier": "Unspecified",
+      "jobs": 1,
+      "revenue": 140.0
+    }
   ]
 };
-
 const money = n => '$' + Number(n).toLocaleString('en-US', {maximumFractionDigits:0});
 const moneyRange = (a,b) => `${money(a)} – ${money(b)}`;
 
 // KPIs
 document.getElementById('k-revenue').textContent = money(METRICS.headline.total_revenue);
-document.getElementById('k-jobs').textContent = 33;
-document.getElementById('k-jobs-note').textContent = `of ${METRICS.headline.total_jobs} logged (incl. 2 non-detail side jobs)`;
+document.getElementById('k-jobs').textContent = METRICS.headline.total_detail_jobs;
+document.getElementById('k-tag').textContent = METRICS.headline.total_detail_jobs + ' billable detail jobs';
+const excludedJobs = METRICS.headline.total_jobs - METRICS.headline.total_detail_jobs;
+document.getElementById('k-jobs-note').textContent = `of ${METRICS.headline.total_jobs} logged (${excludedJobs} excluded — see Data Quality Note)`;
 document.getElementById('k-avg').textContent = money(METRICS.headline.avg_ticket);
 document.getElementById('k-spend').textContent = money(METRICS.headline.total_ad_spend);
 document.getElementById('k-roas').textContent = METRICS.headline.meta_roas + 'x';

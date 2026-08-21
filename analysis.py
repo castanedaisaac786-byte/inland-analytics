@@ -30,7 +30,7 @@ ads = pd.read_csv("data/ad_spend.csv")
 jobs["date"] = pd.to_datetime(jobs["date"], errors="coerce")
 
 # Fallback: if "total" wasn't recorded but job_value was, use job_value.
-jobs["total_clean"] = jobs["total"].fillna(jobs["job_value"])
+jobs["total_clean"] = jobs["total"].fillna(jobs["job_value"] + jobs["tip"].fillna(0))
 
 # Detail-service jobs only (excludes 2 non-detail side jobs: vinyl fencing,
 # decor change — real income, but not part of the detailing business itself).
@@ -170,12 +170,16 @@ metrics = {
     "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
     "data_quality_note": (
         f"Source sheet logs {total_jobs} rows total, incl. 2 non-detail side jobs "
-        f"(vinyl fencing, decor change). Restricting to priced detail-service jobs "
-        f"yields {len(detail_priced)} jobs, matching the source sheet's own '33 jobs' "
-        f"summary label exactly. The sheet's own TOTALS row ($5,561) doesn't fully "
-        f"reconcile with the sum of its own Total column ($5,591 on this basis) — "
-        f"likely a SUM() range that doesn't cover every row. This script recomputes "
-        f"from raw rows rather than trusting the sheet's own total."
+        f"(vinyl fencing, decor change) and 4 pressure-wash jobs, reclassified as "
+        f"non-detail since exterior/patio pressure washing is not a vehicle-detailing "
+        f"service. Restricting to priced, vehicle-detail-service jobs yields "
+        f"{len(detail_priced)} jobs — fewer than the source sheet's own '33 jobs' "
+        f"label, since that label originally counted pressure-washing as a detail "
+        f"service; this analysis defines 'detail' more narrowly on purpose. The "
+        f"sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum "
+        f"of its own Total column on the original basis — likely a SUM() range that "
+        f"doesn't cover every row. This script recomputes from raw rows rather than "
+        f"trusting the sheet's own total."
     ),
     "headline": {
         "total_jobs": total_jobs,

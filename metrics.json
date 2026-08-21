@@ -1,47 +1,35 @@
 {
   "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
-  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change). Restricting to priced detail-service jobs yields 33 jobs, matching the source sheet's own '33 jobs' summary label exactly. The sheet's own TOTALS row ($5,561) doesn't fully reconcile with the sum of its own Total column ($5,591 on this basis) \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
+  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change) and 4 pressure-wash jobs, reclassified as non-detail since exterior/patio pressure washing is not a vehicle-detailing service. Restricting to priced, vehicle-detail-service jobs yields 29 jobs \u2014 fewer than the source sheet's own '33 jobs' label, since that label originally counted pressure-washing as a detail service; this analysis defines 'detail' more narrowly on purpose. The sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum of its own Total column on the original basis \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
   "headline": {
     "total_jobs": 35,
-    "total_detail_jobs": 33,
-    "total_revenue": 5591.0,
-    "avg_ticket": 169.42,
+    "total_detail_jobs": 29,
+    "total_revenue": 4721.0,
+    "avg_ticket": 162.79,
     "total_ad_spend": 673.49,
-    "meta_revenue": 3495.0,
+    "meta_revenue": 3525.0,
     "meta_jobs": 19,
-    "meta_roas": 5.19,
+    "meta_roas": 5.23,
     "blended_cost_per_meta_job": 35.45
   },
   "channel_performance": [
     {
       "channel": "Meta Ads",
       "jobs": 19,
-      "revenue": 3495.0,
-      "avg_ticket": 183.95
+      "revenue": 3525.0,
+      "avg_ticket": 185.53
     },
     {
       "channel": "D2D",
-      "jobs": 10,
-      "revenue": 1246.0,
-      "avg_ticket": 124.6
-    },
-    {
-      "channel": "Facebook (Organic)",
-      "jobs": 1,
-      "revenue": 400.0,
-      "avg_ticket": 400.0
+      "jobs": 8,
+      "revenue": 946.0,
+      "avg_ticket": 118.25
     },
     {
       "channel": "Referral",
       "jobs": 2,
       "revenue": 250.0,
       "avg_ticket": 125.0
-    },
-    {
-      "channel": "Instagram (Organic)",
-      "jobs": 1,
-      "revenue": 200.0,
-      "avg_ticket": 200.0
     }
   ],
   "weekly_trend": [
@@ -62,8 +50,8 @@
     },
     {
       "week": "Aug 03",
-      "jobs": 6,
-      "revenue": 965.0
+      "jobs": 5,
+      "revenue": 835.0
     },
     {
       "week": "Aug 10",
@@ -79,18 +67,13 @@
   "geo_breakdown": [
     {
       "city": "Moreno Valley",
-      "jobs": 7,
-      "revenue": 1220.0
+      "jobs": 6,
+      "revenue": 1020.0
     },
     {
       "city": "Riverside",
       "jobs": 5,
-      "revenue": 915.0
-    },
-    {
-      "city": "Rancho Cucamonga",
-      "jobs": 3,
-      "revenue": 730.0
+      "revenue": 955.0
     },
     {
       "city": "Colton",
@@ -105,17 +88,12 @@
     {
       "city": "Fontana",
       "jobs": 2,
-      "revenue": 280.0
+      "revenue": 310.0
     },
     {
       "city": "Eastvale",
       "jobs": 1,
       "revenue": 215.0
-    },
-    {
-      "city": "Magnolia Center",
-      "jobs": 1,
-      "revenue": 180.0
     },
     {
       "city": "Corona",
@@ -129,6 +107,11 @@
     },
     {
       "city": "Hemet",
+      "jobs": 1,
+      "revenue": 170.0
+    },
+    {
+      "city": "Rancho Cucamonga",
       "jobs": 1,
       "revenue": 170.0
     },
@@ -153,8 +136,8 @@
       "revenue": 85.0
     }
   ],
-  "moreno_valley_jobs": 7,
-  "moreno_valley_revenue": 1220.0,
+  "moreno_valley_jobs": 6,
+  "moreno_valley_revenue": 1020.0,
   "dow_pattern": [
     {
       "day": "Mon",
@@ -179,17 +162,17 @@
     {
       "day": "Fri",
       "jobs": 4,
-      "revenue": 675.0
+      "revenue": 715.0
     },
     {
       "day": "Sat",
-      "jobs": 6,
-      "revenue": 1325.0
+      "jobs": 5,
+      "revenue": 1125.0
     },
     {
       "day": "Sun",
       "jobs": 5,
-      "revenue": 620.0
+      "revenue": 650.0
     }
   ],
   "tier_mix": [
@@ -201,12 +184,7 @@
     {
       "tier": "Standard",
       "jobs": 13,
-      "revenue": 1671.0
-    },
-    {
-      "tier": "Pressure Wash",
-      "jobs": 4,
-      "revenue": 940.0
+      "revenue": 1741.0
     },
     {
       "tier": "Ceramic Coating",

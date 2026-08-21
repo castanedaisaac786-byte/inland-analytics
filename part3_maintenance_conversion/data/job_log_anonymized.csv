@@ -1,7 +1,7 @@
 customer_id,date,city,service,tier,vehicles,channel,job_value,tip,total,is_detail
-C01,2026-06-14,Magnolia Center,Pressure Wash,Pressure Wash,1,D2D,180,0,180,True
-C02,2026-07-05,Rancho Cucamonga,Windows/Pressure Wash,Pressure Wash,1,D2D,160,0,160,True
-C03,2026-07-10,Rancho Cucamonga,Pressure Wash,Pressure Wash,1,Facebook (Organic),400,0,400,True
+C01,2026-06-14,Magnolia Center,Pressure Wash,Pressure Wash,1,D2D,180,0,180,False
+C02,2026-07-05,Rancho Cucamonga,Windows/Pressure Wash,Pressure Wash,1,D2D,160,0,160,False
+C03,2026-07-10,Rancho Cucamonga,Pressure Wash,Pressure Wash,1,Facebook (Organic),400,0,400,False
 C04,2026-07-13,Hemet,Car Detail,Premium,1,Meta Ads,170,0,170,True
 C05,2026-07-15,Riverside,Car Detail,Unspecified,1,D2D,110,30,140,True
 C06,2026-07-15,Fontana,Vinyl Fencing,Other (non-detail),1,Instagram (Organic),200,0,200,False
@@ -11,8 +11,8 @@ C09,2026-07-20,Riverside,Premium Car Detail,Premium,1,Meta Ads,250,0,250,True
 C10,2026-07-20,Colton,Standard Car Detail,Standard,1,D2D,80,16,96,True
 C11,2026-07-21,Rancho Cucamonga,Premium Car Detail,Premium,1,Meta Ads,170,0,170,True
 C12,2026-07-22,Fontana,Standard Car Detail,Standard,1,Meta Ads,100,30,130,True
-C13,2026-07-23,N/A,Premium Car Detail,Premium,1,D2D,170,0,170,True
-C14,2026-07-23,N/A,Standard Car Detail,Standard,1,D2D,100,0,100,True
+C13,2026-07-23,,Premium Car Detail,Premium,1,D2D,170,0,170,True
+C14,2026-07-23,,Standard Car Detail,Standard,1,D2D,100,0,100,True
 C15,2026-07-23,Riverside,Premium Detail (Sedan),Premium,1,Meta Ads,175,40,215,True
 C16,2026-07-24,Eastvale,Premium Detail (Sedan),Premium,1,Meta Ads,175,40,215,True
 C17,2026-07-24,Riverside,Premium Detail (SUV),Premium,1,Meta Ads,195,5,200,True
@@ -32,5 +32,5 @@ C29,2026-08-05,Moreno Valley,Standard Detail (SUV),Standard,1,Meta Ads,150,30,18
 C30,2026-08-06,Corona,Standard Detail (Sedan)+Clay,Standard,1,Meta Ads,175,0,175,True
 C31,2026-08-07,Moreno Valley,Standard Detail (Truck),Standard,1,Referral,150,0,150,True
 C01,2026-08-07,Riverside,Standard Detail,Standard,1,D2D,110,40,150,True
-C32,2026-08-08,Moreno Valley,Pressure Wash Back Patio,Pressure Wash,1,Instagram (Organic),200,0,200,True
+C32,2026-08-08,Moreno Valley,Pressure Wash Back Patio,Pressure Wash,1,Instagram (Organic),200,0,200,False
 C33,2026-08-09,Fontana,Standard Detail,Standard,1,Meta Ads,150,30,180,True
