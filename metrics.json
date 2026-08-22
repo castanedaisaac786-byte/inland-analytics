@@ -1,8 +1,8 @@
 {
   "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
-  "data_quality_note": "Source sheet logs 35 rows total, incl. 2 non-detail side jobs (vinyl fencing, decor change) and 4 pressure-wash jobs, reclassified as non-detail since exterior/patio pressure washing is not a vehicle-detailing service. Restricting to priced, vehicle-detail-service jobs yields 29 jobs \u2014 fewer than the source sheet's own '33 jobs' label, since that label originally counted pressure-washing as a detail service; this analysis defines 'detail' more narrowly on purpose. The sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum of its own Total column on the original basis \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
+  "data_quality_note": "Source sheet logs 37 rows total, incl. 4 non-detail side jobs (vinyl fencing, decor change, garage organization, party planning) and 4 pressure-wash jobs, reclassified as non-detail since exterior/patio pressure washing is not a vehicle-detailing service. Restricting to priced, vehicle-detail-service jobs yields 29 jobs \u2014 fewer than the source sheet's own '33 jobs' label, since that label originally counted pressure-washing as a detail service; this analysis defines 'detail' more narrowly on purpose. The sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum of its own Total column on the original basis \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
   "headline": {
-    "total_jobs": 35,
+    "total_jobs": 37,
     "total_detail_jobs": 29,
     "total_revenue": 4721.0,
     "avg_ticket": 162.79,

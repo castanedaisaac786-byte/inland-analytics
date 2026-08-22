@@ -169,8 +169,9 @@ tier_mix = [
 metrics = {
     "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
     "data_quality_note": (
-        f"Source sheet logs {total_jobs} rows total, incl. 2 non-detail side jobs "
-        f"(vinyl fencing, decor change) and 4 pressure-wash jobs, reclassified as "
+        f"Source sheet logs {total_jobs} rows total, incl. 4 non-detail side jobs "
+        f"(vinyl fencing, decor change, garage organization, party planning) and "
+        f"4 pressure-wash jobs, reclassified as "
         f"non-detail since exterior/patio pressure washing is not a vehicle-detailing "
         f"service. Restricting to priced, vehicle-detail-service jobs yields "
         f"{len(detail_priced)} jobs — fewer than the source sheet's own '33 jobs' "

@@ -34,3 +34,5 @@ date,day_of_week,time_of_day,customer,city,service,package_tier,vehicles,channel
 8/7/2026,Fri,,Dr Morral,Riverside,Standard Detail,Standard,1,D2D,110,40.0,150.0,tracked,1,Total in source sheet appears to not include tip; used sheet total as-is
 8/8/2026,Sat,,Happy,Moreno Valley,Pressure Wash Back patio,Pressure Wash,1,Instagram (Organic),200,,200.0,tracked,0,
 8/9/2026,Sun,,Emmanuel,Fontana,Standard Detail,Standard,1,Meta Ads,150,30.0,180.0,tracked,1,Total not recorded in original sheet; job_value used as fallback
+07/03/2026,,,Dr Morral,Riverside,Garage Organize,Other (non-detail),1,D2D,160,0.0,160.0,pre,0,"Backfilled; posted about this job, which led to the Lucero booking"
+08/22/2026,Fri,4:30-9 PM,Lucero,Perris,Party Planning / Loading Unload,Other (non-detail),1,D2D,170,20.0,190.0,tracked,0,Knocked on her door a month ago; saw the garage-organize post

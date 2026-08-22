@@ -1,36 +1,38 @@
 date,customer,city,service,package_tier,vehicles,acquisition_channel,job_value,tip,total,notes,gender
-6/14/26,Dr Morral,Magnolia Center,Windows / Pressure Wash,Pressure Wash,1,D2D,180,,180,No date logged (pre Jul 18 tracking),Male
-7/10/26,Patrick,Rancho Cucamonga,Pressure Wash,Pressure Wash,1,Facebook (Organic),400,,400,No date logged (pre Jul 18 tracking),Male
-7/5/2026,Al,Rancho Cucamonga,Windows / Pressure Wash,Pressure Wash,1,D2D,160,,160,No date logged (pre Jul 18 tracking),Male
-7/13/26,John,Hemet,Car Detail,Premium,1,Meta Ads,170,,170,No date logged (pre Jul 18 tracking),Male
-7/15/2026,Denise,Riverside,Car Detail,Unspecified,1,D2D,110,30,140,No date logged (pre Jul 18 tracking),Female
-7/15/2026,David,Fontana,Vinyl Fencing,Other (non-detail),1,Instagram(Organic),200,,200,No date logged; side job not a detail service,Male
-7/30/2026,Dr Morral,Magnolia Center,Decor Change,Other (non-detail),1,D2D,320,,320,No date logged; repeat customer,Male
-07/18/2026,Christopher,Highland,Premium Car Detail,Premium,1,Meta Ads,175,,175,,Male
-07/20/2026,Adam,Riverside,Premium Car Detail,Premium,1,Meta Ads,250,,250,,Male
-07/19/2026,Michelle,Redlands,Standard Car Detail,Standard,1,Meta Ads,100,20,120,,Female
-07/21/2026,Terrynce,Rancho Cucamonga,Premium Car Detail,Premium,1,Meta Ads,170,,170,,Male
-07/20/2026,Sandra Bryant,Colton,Standard Car Detail,Standard,1,D2D,80,16,96,,Female
-07/22/2026,Christina,Fontana,Standard Car Detail,Standard,1,Meta Ads,100,30,130,,Female
-07/23/2026,Terry's Wife,N/A,Premium Car Detail,Premium,1,D2D,170,,170,Referral-adjacent (Terry's household),Female
-07/23/2026,Terry's Neighbor,N/A,Standard Car Detail,Standard,1,D2D,100,,100,Referral-adjacent (Terry's household),Male
-07/25/2026,Adrian Ponce,Moreno Valley,2x Premium Car Detail,Premium,2,Meta Ads,350,30,380,,Male
-07/25/2026,Bryan Luxury,Moreno Valley,Standard Car Detail,Standard,1,D2D,80,,80,,Male
-07/26/2026,BH,Moreno Valley,Interior Detail (Truck),Interior,1,Meta Ads,90,40,130,,Male
-07/29/2026,Maritza,Menifee,Standard Detail (SUV),Standard,1,Meta Ads,120,20,140,Left a Review,Female
-07/23/2026,Favi,Riverside,Premium Detail (Sedan),Premium,1,Meta Ads,175,40,215,,Female
-07/24/2026,James,Eastvale,Premium Detail (Sedan),Premium,1,Meta Ads,175,40,215,,Male
-07/24/2026,Santiago,Riverside,Premium Detail (SUV),Premium,1,Meta Ads,195,5,200,,Male
-07/26/2026,Juana,Jurupa Valley,2x Maintenance Wash,Maintenance,2,Meta Ads,90,30,120,Attributed via Meta Ads + Instagram,Female
-07/27/2026,Celia,Jurupa Valley,SUV Maintenance Wash,Maintenance,1,D2D,70,,70,,Female
-07/27/2026,Celia's Neighbor,Jurupa Valley,Standard Detail (SUV),Standard,1,D2D,120,20,140,,Male
-07/29/2026,Miguel,Montclair,Interior Detail (Sedan),Interior,1,Meta Ads,75,10,85,,Male
-08/01/2026,Duene,Colton,Ceramic Coating,Ceramic Coating,1,Meta Ads,350,10,360,,Male
-08/01/2026,Nanette,Beaumont,Interior Detail (Truck),Interior,1,Meta Ads,90,40,130,,Female
-08/02/2026,Diaz (Coach),Moreno Valley,2x Standard (Truck + Sedan),Standard,2,Referral,100,,100,Personal connection referral,Male
-08/05/2026,Jasmine,Moreno Valley,Standard Detail (SUV),Standard,1,Meta Ads,150,30,180,,Female
-08/06/2026,Hassan,Corona,Standard Detail (Sedan) + Clay Bar,Standard,1,Meta Ads,175,,175,Referred her husband,Female
-08/07/2026,Sam,Moreno Valley,Standard Detail (Truck),Standard,1,Referral,150,,150,Referred by Diaz,Female
-08/07/2026,Dr Morral,Riverside,Standard Detail,Standard,1,D2D,110,40,110,,
-08/08/2026,Happy,Moreno Valley,Pressure Wash Back patio,Pressure Wash,1,Instagram(Organic),200,,200,,Male
-08/09/2026,Emmanuel,Fontana,Standard Detail,Standard,1,Meta Ads,150,30,,,Male
+6/14/26,Dr Morral,Magnolia Center,Windows / Pressure Wash,Pressure Wash,1,D2D,180,,180.0,No date logged (pre Jul 18 tracking),Male
+7/10/26,Patrick,Rancho Cucamonga,Pressure Wash,Pressure Wash,1,Facebook (Organic),400,,400.0,No date logged (pre Jul 18 tracking),Male
+7/5/2026,Al,Rancho Cucamonga,Windows / Pressure Wash,Pressure Wash,1,D2D,160,,160.0,No date logged (pre Jul 18 tracking),Male
+7/13/26,John,Hemet,Car Detail,Premium,1,Meta Ads,170,,170.0,No date logged (pre Jul 18 tracking),Male
+7/15/2026,Denise,Riverside,Car Detail,Unspecified,1,D2D,110,30.0,140.0,No date logged (pre Jul 18 tracking),Female
+7/15/2026,David,Fontana,Vinyl Fencing,Other (non-detail),1,Instagram(Organic),200,,200.0,No date logged; side job not a detail service,Male
+7/30/2026,Dr Morral,Magnolia Center,Decor Change,Other (non-detail),1,D2D,320,,320.0,No date logged; repeat customer,Male
+07/18/2026,Christopher,Highland,Premium Car Detail,Premium,1,Meta Ads,175,,175.0,,Male
+07/20/2026,Adam,Riverside,Premium Car Detail,Premium,1,Meta Ads,250,,250.0,,Male
+07/19/2026,Michelle,Redlands,Standard Car Detail,Standard,1,Meta Ads,100,20.0,120.0,,Female
+07/21/2026,Terrynce,Rancho Cucamonga,Premium Car Detail,Premium,1,Meta Ads,170,,170.0,,Male
+07/20/2026,Sandra Bryant,Colton,Standard Car Detail,Standard,1,D2D,80,16.0,96.0,,Female
+07/22/2026,Christina,Fontana,Standard Car Detail,Standard,1,Meta Ads,100,30.0,130.0,,Female
+07/23/2026,Terry's Wife,,Premium Car Detail,Premium,1,D2D,170,,170.0,Referral-adjacent (Terry's household),Female
+07/23/2026,Terry's Neighbor,,Standard Car Detail,Standard,1,D2D,100,,100.0,Referral-adjacent (Terry's household),Male
+07/25/2026,Adrian Ponce,Moreno Valley,2x Premium Car Detail,Premium,2,Meta Ads,350,30.0,380.0,,Male
+07/25/2026,Bryan Luxury,Moreno Valley,Standard Car Detail,Standard,1,D2D,80,,80.0,,Male
+07/26/2026,BH,Moreno Valley,Interior Detail (Truck),Interior,1,Meta Ads,90,40.0,130.0,,Male
+07/29/2026,Maritza,Menifee,Standard Detail (SUV),Standard,1,Meta Ads,120,20.0,140.0,Left a Review,Female
+07/23/2026,Favi,Riverside,Premium Detail (Sedan),Premium,1,Meta Ads,175,40.0,215.0,,Female
+07/24/2026,James,Eastvale,Premium Detail (Sedan),Premium,1,Meta Ads,175,40.0,215.0,,Male
+07/24/2026,Santiago,Riverside,Premium Detail (SUV),Premium,1,Meta Ads,195,5.0,200.0,,Male
+07/26/2026,Juana,Jurupa Valley,2x Maintenance Wash,Maintenance,2,Meta Ads,90,30.0,120.0,Attributed via Meta Ads + Instagram,Female
+07/27/2026,Celia,Jurupa Valley,SUV Maintenance Wash,Maintenance,1,D2D,70,,70.0,,Female
+07/27/2026,Celia's Neighbor,Jurupa Valley,Standard Detail (SUV),Standard,1,D2D,120,20.0,140.0,,Male
+07/29/2026,Miguel,Montclair,Interior Detail (Sedan),Interior,1,Meta Ads,75,10.0,85.0,,Male
+08/01/2026,Duene,Colton,Ceramic Coating,Ceramic Coating,1,Meta Ads,350,10.0,360.0,,Male
+08/01/2026,Nanette,Beaumont,Interior Detail (Truck),Interior,1,Meta Ads,90,40.0,130.0,,Female
+08/02/2026,Diaz (Coach),Moreno Valley,2x Standard (Truck + Sedan),Standard,2,Referral,100,,100.0,Personal connection referral,Male
+08/05/2026,Jasmine,Moreno Valley,Standard Detail (SUV),Standard,1,Meta Ads,150,30.0,180.0,,Female
+08/06/2026,Hassan,Corona,Standard Detail (Sedan) + Clay Bar,Standard,1,Meta Ads,175,,175.0,Referred her husband,Female
+08/07/2026,Sam,Moreno Valley,Standard Detail (Truck),Standard,1,Referral,150,,150.0,Referred by Diaz,Female
+08/07/2026,Dr Morral,Riverside,Standard Detail,Standard,1,D2D,110,40.0,110.0,,
+08/08/2026,Happy,Moreno Valley,Pressure Wash Back patio,Pressure Wash,1,Instagram(Organic),200,,200.0,,Male
+08/09/2026,Emmanuel,Fontana,Standard Detail,Standard,1,Meta Ads,150,30.0,,,Male
+07/03/2026,Dr Morral,Riverside,Garage Organize,Other (non-detail),1,D2D,160,0.0,160.0,Backfilled; led to Lucero booking,Male
+08/22/2026,Lucero,Perris,Party Planning / Loading Unload,Other (non-detail),1,D2D,170,20.0,190.0,Knocked on her door a month ago,Female
