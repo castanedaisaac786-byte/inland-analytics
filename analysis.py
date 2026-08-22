@@ -37,8 +37,9 @@ jobs["total_clean"] = jobs["total"].fillna(jobs["job_value"] + jobs["tip"].filln
 detail_jobs = jobs[jobs["is_detail_job"] == 1].copy()
 
 # Billable, priced detail jobs = the business's actual core revenue base.
-# This lands at 33 jobs, which matches the source sheet's own "33 jobs"
-# label exactly — a good sanity check that the transcription is faithful.
+# This lands below the source sheet's own "33 jobs" label, because that
+# label counted pressure-washing as a detail service and this analysis
+# deliberately does not. See data_quality_note below for full reasoning.
 detail_priced = detail_jobs.dropna(subset=["total_clean"]).copy()
 jobs_priced = detail_priced  # alias used throughout the rest of the script
 
