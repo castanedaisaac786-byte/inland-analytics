@@ -26,9 +26,14 @@ Part 4:             Permutation-tested that hypothesis on 456 rows of placement
                     only rank placements by COST — the same limitation as
                     Section 4. It could not test lead quality.
 Part 5 (this):      Targeting was widened and placements adjusted. Result:
-                    31 messages on $51 spend, still zero bookings. More
+                    58 messages on $95.01 spend, still zero bookings. More
                     messages, same revenue. Targeting is not the lever.
                     So test the mechanism instead.
+Part 6:             Resolved the benchmark. The Denise Reactions creative ran
+                    TWICE ($42.84 + $96.20 = $139.04) for 2 logged bookings —
+                    $69.52 per booking, not the $26.09 this file previously
+                    assumed from 5 recalled bookings. All thresholds below are
+                    recomputed against $69.52.
 
 CENTRAL QUESTION
 ----------------
@@ -45,10 +50,10 @@ from scipy import stats
 # 1. BENCHMARK — the only campaign in account history with a known booking rate
 # =============================================================================
 REFERENCE = {
-    "name":     'Post: "Real results, real feedback"',
-    "spend":    130.47,
+    "name":     "Denise Reactions creative (two runs)",
+    "spend":    139.04,     # $42.84 + $96.20, RESOLVED Aug 2026
     "messages": 26,
-    "bookings": 5,          # recalled, NOT logged — see LIMITATIONS
+    "bookings": 2,          # from the audited job log, not recall
 }
 REFERENCE["conv_rate"]       = REFERENCE["bookings"] / REFERENCE["messages"]
 REFERENCE["cost_per_booking"] = REFERENCE["spend"] / REFERENCE["bookings"]
@@ -89,7 +94,8 @@ CONFOUNDS = [
 # =============================================================================
 # 3. CURRENT STATE
 # =============================================================================
-CURRENT_A = {"spend": 51.00, "messages": 31, "bookings": 0}
+CURRENT_A = {"spend": 95.01, "messages": 58, "bookings": 0}
+CURRENT_B = {"spend": 20.72, "leads":     3, "bookings": 1}   # tentative
 
 
 def evaluate_zero_result(spend, events, hypothesis_rate, benchmark_cpb):
@@ -155,6 +161,17 @@ def report():
     print("       win for B is conservative; a loss for B is uninterpretable.")
     print("    >> FIX AVAILABLE: excluding Stories from Arm B removes one confound")
     print("       and strengthens the arm you expect to win.")
+
+    print("\n[3b] HEAD TO HEAD")
+    a_cpb = "n/a" if CURRENT_A["bookings"] == 0 else f"${CURRENT_A['spend']/CURRENT_A['bookings']:.2f}"
+    b_cpb = f"${CURRENT_B['spend']/CURRENT_B['bookings']:.2f}"
+    print(f"    ARM A messages  ${CURRENT_A['spend']:6.2f} / {CURRENT_A['messages']:2d} msgs  "
+          f"-> {CURRENT_A['bookings']} bookings, cost/booking {a_cpb}")
+    print(f"    ARM B leads     ${CURRENT_B['spend']:6.2f} / {CURRENT_B['leads']:2d} leads "
+          f"-> {CURRENT_B['bookings']} booking,  cost/booking {b_cpb}")
+    print(f"    benchmark to beat: ${REFERENCE['cost_per_booking']:.2f}/booking")
+    print("    >> Arm B produced a booking on 22% of Arm A's spend. Cost per")
+    print("       EVENT favours A 4x and is not the metric. Only bookings compare.")
 
     print("\n[4] CURRENT EVIDENCE — ARM A")
     r = evaluate_zero_result(
