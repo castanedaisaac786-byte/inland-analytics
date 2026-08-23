@@ -66,7 +66,25 @@ NON_DETAIL_TIERS = ["Non-Detail", "Pressure Wash"]
 
 
 def load(path=JOB_LOG):
+    """Schema-tolerant loader. Accepts either the original job_log.csv
+    column names or the v2 attribution schema."""
     df = pd.read_csv(path)
+
+    # The as-entered total is called `total` in v1 and `logged_total` in v2.
+    entered = "logged_total" if "logged_total" in df.columns else "total"
+    if entered not in df.columns:
+        raise SystemExit("job_log.csv has neither a `total` nor `logged_total` column.")
+    df["logged_total"] = df[entered]
+
+    missing = [c for c in ("creative_hook", "platform_destination", "ad_attributed")
+               if c not in df.columns]
+    if missing:
+        raise SystemExit(
+            f"job_log.csv is missing the attribution columns {missing}.\n"
+            "Run:  python3 migrate_job_log.py\n"
+            "That adds them in place without disturbing the columns "
+            "analysis.py and Part 3 depend on.")
+
     # Rule 2: never trust a manually entered total.
     df["total"] = df.job_value.fillna(0) + df.tip.fillna(0)
     df["total_mismatch"] = df.logged_total != df.total
