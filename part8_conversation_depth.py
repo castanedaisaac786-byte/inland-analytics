@@ -92,6 +92,13 @@ if __name__ == "__main__":
 
     print("\nLIMITATIONS")
     print("  - Correlational. Intent drives both message count and booking.")
+    print("  - MEASUREMENT: Message_count is the FULL thread, including any")
+    print("    post-confirmation logistics (address, timing). Booked leads")
+    print("    therefore accumulate messages partly BECAUSE they booked. The")
+    print("    19.9 mean is inflated by an unknown amount relative to a")
+    print("    count-to-confirmation definition. Measured consistently across")
+    print("    all 116 leads, so the comparison holds; the absolute threshold")
+    print("    does not transfer to a differently-measured dataset.")
     print("  - Outcomes hand-labelled by the operator, who knew which booked.")
     print("  - The 0-message group is an artifact: booked instantly by phone")
     print("    or DM outside the tracked thread.")
