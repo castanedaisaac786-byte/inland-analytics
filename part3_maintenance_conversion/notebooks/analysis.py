@@ -32,20 +32,29 @@ computed_total = detail_jobs["total"].sum()
 print("=" * 60)
 print("DATA QUALITY CHECK")
 print("=" * 60)
-print("NOTE ON BASIS. An earlier version of this check compared the")
-print("detail-only figure against the source sheet's ALL-JOBS total")
-print("($5,561) and reported an $840 'discrepancy' attributed to tip")
-print("errors. That was a basis mismatch, not a data error: the two")
-print("figures count different job sets. The $840 was never a tip bug.")
+print(f"Computed total (job_value + tip): ${computed_total:,.0f}")
+print(f"Originally reported total in sheet: ${reported_total:,.0f}")
+print(f"Discrepancy: ${computed_total - reported_total:,.0f}")
 print()
-print("The like-for-like check is the sheet against itself. Its Total")
-print("column sums to $6,491 against its own TOTALS row of $6,531 --")
-print("a $40 gap, which is exactly the Dr Morral 8/7 dropped tip")
-print("($110 + $40 logged as $110). One row, $40, real.")
+print("BASIS NOTE: the figure above compares detail-only revenue against")
+print("the sheet's ALL-JOBS total, which counts pressure-wash and non-detail")
+print("rows the detail-only basis excludes. It is a basis mismatch, not a")
+print("tip error. The real like-for-like check is the sheet against itself:")
+print("its Total column sums to $6,491 vs its own TOTALS row of $6,531 --")
+print("a $40 gap, exactly the Dr Morral 8/7 dropped tip. One row, $40, real.")
 print()
-print("Every script here recomputes from job_value + tip and treats any")
-print("entered total as a value to check against, never to trust.")
 
+# ---------------------------------------------------------------
+# 2. Maintenance funnel
+# ---------------------------------------------------------------
+status_counts = maint["status"].value_counts()
+too_early = status_counts.get("too_early", 0)
+pitched = len(maint) - too_early
+no_response = status_counts.get("unresponsive", 0) + status_counts.get("no_contact_info", 0)
+responded = pitched - no_response
+positive = status_counts.get("confirmed", 0) + status_counts.get("pending_positive", 0) \
+    + status_counts.get("active_self_requested", 0)
+confirmed = status_counts.get("confirmed", 0) + status_counts.get("active_self_requested", 0)
 
 print("=" * 60)
 print("MAINTENANCE FUNNEL")
