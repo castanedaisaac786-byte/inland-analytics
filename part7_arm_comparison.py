@@ -1,3 +1,51 @@
+"""
+Part 7 - Mechanism Comparison at Unequal Budget (PRE-REGISTERED)
+Registered 2026-08-24, before the outcome is known.
+
+REPLACES the original Part 7, which pre-registered a scale-up of "Save a 2007
+Chevy interior" on a prior of $18.04/booking from 4 events. Click-level ad_id
+data later showed only 2 of those 4 carried that ad's ID. True prior is
+$72.14/2 = $36.07, and the 95% interval widens from 9.4x to 29.8x. The
+creative also stopped delivering 2026-07-20. That test was never run; it
+survives in git history as a pre-registration invalidated by better data.
+
+THE QUESTION: does an instant lead form convert as well as a Messenger
+conversation, per dollar?
+  ARM A messages  Optimized targeting Camp - Copy, ad "Any time - Copy", $20/day
+  ARM B form      B Leads Test, instant form + callback, $5/day
+
+NOT A CLEAN A/B TEST
+1. Budgets are 4:1. Only cost per booking compares; raw counts do not.
+2. The budget split is itself a confound - Meta's optimizer behaves
+   differently at $5/day, and a low-budget campaign may never leave the
+   learning phase. That handicap is inseparable from the mechanism.
+3. Objective, entry point, and response speed all differ. Bundle vs bundle.
+4. Allocation is not random. The bigger budget went to the arm already
+   believed better. This is a rollout with a hedge, not an experiment.
+
+PRIOR (lifetime, click-attributed)
+  messages  $74.99 -> 2 bookings, $37.49 each
+  form     $101.81 -> 0 bookings, never converted
+The form mechanism has spent MORE than messages and produced nothing. That
+predates this test and is the strongest evidence in it.
+
+POWER. At $5/day for 14 days Arm B spends $70. If it converted at exactly the
+messages rate it would expect 1.87 bookings and STILL show zero 15.5% of the
+time. A zero from Arm B is weak evidence. Arm A expects 7.47 and shows zero
+0.1% of the time.
+
+DECISION RULE
+  duration       14 days from 2026-08-24, or $280 on Arm A
+  primary metric cost per BOOKING, not per lead or message
+  minimum sample Arm B is NOT judged before $112 cumulative spend
+  win            lower cost per booking takes the budget, significance or not
+  tie            Arm B at $112 with 0 bookings while Arm A has 3+ retires forms
+  no touching    no creative, budget, audience or placement edits in the window
+
+WHAT WOULD CHANGE MY MIND: two form bookings inside $70 puts Arm B at
+$35/booking, indistinguishable from Arm A. Four leads arrived; all four went
+unresponsive.
+
 import numpy as np
 from scipy import stats
 
