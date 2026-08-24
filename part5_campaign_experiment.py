@@ -169,7 +169,8 @@ def report():
 
     print("\n[3b] HEAD TO HEAD")
     a_cpb = "n/a" if CURRENT_A["bookings"] == 0 else f"${CURRENT_A['spend']/CURRENT_A['bookings']:.2f}"
-    b_cpb = f"${CURRENT_B['spend']/CURRENT_B['bookings']:.2f}"
+    b_cpb = ("n/a" if CURRENT_B["bookings"] == 0
+             else f"${CURRENT_B['spend']/CURRENT_B['bookings']:.2f}")
     print(f"    ARM A messages  ${CURRENT_A['spend']:6.2f} / {CURRENT_A['messages']:2d} msgs  "
           f"-> {CURRENT_A['bookings']} bookings, cost/booking {a_cpb}")
     print(f"    ARM B leads     ${CURRENT_B['spend']:6.2f} / {CURRENT_B['leads']:2d} leads "
