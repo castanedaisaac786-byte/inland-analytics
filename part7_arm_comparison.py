@@ -46,6 +46,7 @@ WHAT WOULD CHANGE MY MIND: two form bookings inside $70 puts Arm B at
 $35/booking, indistinguishable from Arm A. Four leads arrived; all four went
 unresponsive.
 
+"""
 import numpy as np
 from scipy import stats
 ""
