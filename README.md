@@ -305,10 +305,12 @@ Not one shuffle produced a gap that large.
 
 | Messages | Leads | Booked | Rate |
 |---|---|---|---|
-| 0–5 | 62 | 0 | **0%** |
-| 6–9 | 22 | 2 | 9.1% |
-| 10–14 | 17 | 2 | 11.8% |
-| **15+** | **15** | **12** | **80%** |
+| 0 | 5 | 0 | 0.0% |
+| 1-2 | 9 | 1 | 11.1% |
+| 3-5 | 48 | 0 | 0.0% |
+| 6-9 | 22 | 2 | 9.1% |
+| 10-14 | 18 | 3 | 16.7% |
+| 15+ | 15 | 12 | 80.0% |
 
 Above fifteen messages, four in five close. Below it, conversion is low and
 unstructured — the 1-2 and 6-9 bands each hold one or two bookings, so the

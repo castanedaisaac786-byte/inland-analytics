@@ -43,5 +43,8 @@ jobs:
       - name: Part 7 scale-up pre-registration
         run: python part7_arm_comparison.py
 
+      - name: Part 8 conversation depth
+        run: python part8_conversation_depth.py
+
       - name: Section 4 full-spend verification
         run: python verify_section4.py
