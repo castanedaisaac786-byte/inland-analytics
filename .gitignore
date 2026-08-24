@@ -9,3 +9,4 @@ __pycache__/
 data/_leads_raw.csv
 data/_leads_crosswalk.csv
 *.pdf
+*.bak
