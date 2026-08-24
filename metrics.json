@@ -92,6 +92,11 @@
       "revenue": 456.0
     },
     {
+      "city": "CITY_HERE",
+      "jobs": 2,
+      "revenue": 425.0
+    },
+    {
       "city": "Jurupa Valley",
       "jobs": 3,
       "revenue": 330.0
@@ -100,11 +105,6 @@
       "city": "Fontana",
       "jobs": 2,
       "revenue": 310.0
-    },
-    {
-      "city": "REPLACE_CITY",
-      "jobs": 1,
-      "revenue": 300.0
     },
     {
       "city": "Eastvale",
@@ -140,11 +140,6 @@
       "city": "Beaumont",
       "jobs": 1,
       "revenue": 130.0
-    },
-    {
-      "city": "REPLACE",
-      "jobs": 1,
-      "revenue": 125.0
     },
     {
       "city": "Redlands",

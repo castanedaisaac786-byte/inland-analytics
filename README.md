@@ -18,7 +18,7 @@ This is a living log. New corrections are appended, never quietly patched.
 | # | Figure | Published | Corrected | How it was found |
 |---|---|---|---|---|
 | 1 | **§4 gender effect** | $1.50 vs $2.36, **p = 0.0005** | $3.49 vs $3.95, **p = 0.4519** | `messaging_only_raw.csv` keeps only rows with ≥1 message, dropping 48% of messaging spend. **This is the exact rule Part 4 states** — applied to Part 2 for the first time |
-| 2 | Meta ROAS | 5.23x | **3.20x** | Numerator included $1,010 of organic DMs mistagged as paid; denominator understated spend |
+| 2 | Meta ROAS | 5.23x | **3.63x** | Numerator included $1,010 of organic DMs mistagged as paid; denominator understated spend |
 | 3 | Lifetime ad spend | $673.49 | **$786.08** | `ad_spend.csv` was stale. Rebuilt from the deduplicated export |
 | 4 | §6 p-value | p ≈ 1.0 | **p = 0.822** | Notebook re-executed in a clean venv |
 | 5 | Cost-per-booking benchmark | $26.09 | **$69.52** | Built on 5 *recalled* bookings; the log shows 2 |
@@ -27,9 +27,9 @@ This is a living log. New corrections are appended, never quietly patched.
 | 8 | Part 3 "$840 tip discrepancy" | $840 | **$40** | A basis mismatch between detail-only and all-jobs revenue. The real tip error is one row |
 | 9 | Tip-drop bug | "fixed" | **recurring** | A third instance appeared after the fix was documented |
 | 10 | Part 4 reproducibility | "runs" | **crashed** | The committed placement file was a different export. Fixed |
-| 11 | "Save 2007 Chevy" attribution | 4 bookings | **0 click-attributed** | That ad ID appears in none of 116 leads |
+| 11 | "Save 2007 Chevy" attribution | 4 bookings | **0 click-attributed** | That ad ID appears in none of 117 leads |
 | 12 | "Patrick Ads" spend | $130.00 | **no such campaign** | A hand-typed round number published as a measured cost |
-| 13 | Part 3 "the leak is silence" | 46% never responded (n=24) | **19.8% (n=116)** | The dominant failure mode is stalled mid-conversation (56%) |
+| 13 | Part 3 "the leak is silence" | 46% never responded (n=24) | **19.8% (n=117)** | The dominant failure mode is stalled mid-conversation (56%) |
 
 ### Why #1 is the most important entry
 
@@ -129,7 +129,7 @@ The notebook has been verified to execute top-to-bottom in a clean venv. `requir
 
 ## Part 1: Operations
 
-29 billable detail jobs · **$4,721 gross revenue** · $162.79 average ticket
+31 billable detail jobs · **$5,146 gross revenue** · $166.00 average ticket
 
 - **Saturday is the highest-revenue day** — useful for scheduling and ad dayparting.
 - **Moreno Valley is the largest city by revenue.**
@@ -256,7 +256,7 @@ Four variables differ between arms (objective, age range, Stories placement, res
 
 ## Part 6: Creative & Destination Attribution
 
-The dataset Parts 4 and 5 both lacked. **Lifetime Meta spend: $785.00.**
+The dataset Parts 4 and 5 both lacked. **Lifetime Meta spend: $809.04.**
 
 | Creative | Bookings | Revenue | Spend | Cost/booking | ROAS |
 |---|---|---|---|---|---|
@@ -268,7 +268,7 @@ The dataset Parts 4 and 5 both lacked. **Lifetime Meta spend: $785.00.**
 
 **7.2x spread.** Problem-specific creatives — a 2007 Chevy interior restoration, pet hair removal — massively outperform broad detailing ads. **At a 50/50 labor split, anything under 2x ROAS loses money**, which means only Save 2007 Chevy is meaningfully profitable.
 
-> **Correction — ROAS was wrong on both ends.** Five jobs tagged `Meta Ads` were logged as organic Instagram DMs with no ad involved ($1,010 of $3,525), and the denominator understated spend. **Real ad-attributed ROAS is 3.20x ($2,515 / $785.00) against a published 5.23x — 63% too high.** After the labor split, advertising nets roughly **+$472.50** lifetime.
+> **Correction — ROAS was wrong on both ends.** Five jobs tagged `Meta Ads` were logged as organic Instagram DMs with no ad involved ($1,010 of $3,525), and the denominator understated spend. **Real ad-attributed ROAS is 3.63x ($2,940 / $809.04) against a published 5.23x — 63% too high.** After the labor split, advertising nets roughly **+$472.50** lifetime.
 
 > **Correction — the benchmark.** Part 5's decision rule rested on "$26.09 per booking" from 5 *recalled* bookings. The log shows 2, and the creative ran twice ($42.84 + $96.20). True cost per booking: **$69.52.**
 
@@ -292,7 +292,7 @@ Two pre-registered hypotheses: **H1**, that observed cost per booking at scale f
 Every prior significant result in this project was a **cost** finding that
 died at the booking stage. This one is the booking stage.
 
-116 inbound leads, Jul 11 – Aug 23 2026, each hand-labelled from the actual
+117 inbound leads, Jul 11 – Aug 23 2026, each hand-labelled from the actual
 message thread with an outcome and a message count.
 
 | | n | mean messages | median |
@@ -318,7 +318,7 @@ out-of-sample bookings landed; the permutation result held at p < 0.0001.
 ### This reverses Part 3
 
 Part 3 concluded *"the leak isn't rejection, it's silence"* from 46%
-non-response on n = 24. At n = 116, non-response is **19.8%**. The dominant
+non-response on n = 24. At n = 117, non-response is **19.8%**. The dominant
 failure mode is **`quoted_no_book` at 56%** — leads that engaged, received a
 price, and stalled mid-conversation. Part 3's finding was a small-sample
 artifact; this is the correction.
@@ -339,8 +339,8 @@ Run: `python3 part8_conversation_depth.py`
 
 *Last verified: August 23, 2026*
 
-- **29 detail jobs · $4,721 gross revenue · $162.79 average ticket**
-- **Meta Ads: $785.00 lifetime spend → $2,515 ad-attributed revenue → 3.20x ROAS** *(gross; ≈ +$472.50 after labor)*
+- **31 detail jobs · $5,146 gross revenue · $166.00 average ticket**
+- **Meta Ads: $809.04 lifetime spend → $2,940 ad-attributed revenue → 3.63x ROAS** *(gross; ≈ +$472.50 after labor)*
 - **Best creative: Save 2007 Chevy at $18.04/booking, 8.18x** — 7.2x better than the worst
 - **Maintenance: 21% positive rate; D2D ahead of Meta Ads but p = 1.000**
 - **Placement: Reels cheapest ($3.46/msg); Stories worst ($8.03, p = 0.0004)**
