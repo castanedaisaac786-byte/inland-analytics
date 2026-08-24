@@ -1,4 +1,11 @@
 """
+CORRECTION (Aug 24, 2026). The prior was built on 4 bookings at $18.04.
+Click-level ad_id data shows only 2 of those 4 came from this creative --
+BH is unverified and Maritza's lead carries the Denise ad_id. The real
+prior is $72.14 / 2 = $36.07 per booking, exactly double the original.
+The 95% interval widens from 9.4x to 29.8x ($9.99 - $297.84). The old
+interim stop rule of $36 now sits AT the point estimate.
+
 Part 7 — Scale-Up Validation (PRE-REGISTERED)
 ==============================================
 Does a small-sample efficiency estimate survive a 4x increase in spend?
@@ -16,7 +23,7 @@ BEFORE the money is spent. That is the whole point of it.
 THE PRIOR
 ---------
 Part 6 identified "Save a 2007 Chevy interior" as the best-performing creative
-in the account: $72.14 spend, 4 bookings, $18.04 per booking, 8.18x ROAS.
+in the account: $72.14 spend, 4 bookings, $36.07 per booking, 8.18x ROAS.
 
 That estimate rests on FOUR events. The honest 95% interval on a Poisson count
 of 4 runs from 1.09 to 10.24, which puts true cost per booking somewhere
@@ -31,7 +38,7 @@ THE TEST
 --------
 Scale to $40/day. Staged, with an interim decision at $120.
 
-  Stage 1 (days 1-3, $120): does $18.04/booking hold at 1.7x the original spend?
+  Stage 1 (days 1-3, $120): does $36.07/booking hold at 1.7x the original spend?
   Interim rule: if observed cost per booking exceeds $36 (2x the prior point
                 estimate), stop and re-evaluate rather than deploying the rest.
   Stage 2 (days 4-7, $160): only if Stage 1 clears.
@@ -83,7 +90,7 @@ PLAN = {
     "daily_budget":     40.00,
     "stage1_days":      3,
     "stage2_days":      4,
-    "interim_stop_cpb": 36.00,   # 2x the prior point estimate
+    "interim_stop_cpb": 54.00,   # 2x the prior point estimate
     "capacity_ceiling": 3.6,     # historical detail jobs per week
 }
 PLAN["stage1_spend"] = PLAN["daily_budget"] * PLAN["stage1_days"]

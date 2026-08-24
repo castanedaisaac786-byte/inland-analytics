@@ -47,7 +47,7 @@ import pandas as pd
 import numpy as np
 
 JOB_LOG = "data/job_log.csv"
-META_LIFETIME_SPEND = 809.04   # updated 2026-08-23
+META_LIFETIME_SPEND = 809.04   # updated 2026-08-24
 
 # Spend per creative, from the Meta Ads Manager lifetime export.
 # None = the creative could not be matched to a single spend line.
@@ -56,7 +56,9 @@ CREATIVE_SPEND = {
     "Denise Reactions": 139.04,   # 42.84 + 96.20, two separate campaign runs
     "August Broad":     113.13,
     "Patrick Ads":      130.00,
-    "Any time - Copy":   22.96,
+    "Any time - Copy":   18.38,
+    "Any time":          56.61,
+    "Pet hair removal ad": 10.37,
     "Pet Hair Removal":   None,   # shares the $330.69 unattributed bucket
     "Unspecified":        None,   # with Pet Hair Removal; split unknown
 }
