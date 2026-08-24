@@ -41,7 +41,7 @@ jobs:
         run: python part6_attribution.py
 
       - name: Part 7 scale-up pre-registration
-        run: python part7_scaleup_test.py
+        run: python part7_arm_comparison.py
 
       - name: Section 4 full-spend verification
         run: python verify_section4.py

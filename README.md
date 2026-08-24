@@ -88,7 +88,7 @@ inland-analytics/
 ├── part4_placement_analysis.py             # P4: placement permutation tests
 ├── part5_campaign_experiment.py            # P5: live experiment + decision rule
 ├── part6_attribution.py                    # P6: creative & destination attribution
-├── part7_scaleup_test.py                   # P7: pre-registered scale-up validation
+├── part7_arm_comparison.py                   # P7: pre-registered scale-up validation
 ├── refresh.py                              # reruns P1 & P3, resyncs the dashboard
 ├── requirements.txt                        # pinned; the old install line was incomplete
 └── README.md
@@ -106,7 +106,7 @@ cd part3_maintenance_conversion/notebooks && python3 analysis.py   # P3
 python3 part4_placement_analysis.py             # P4
 python3 part5_campaign_experiment.py            # P5
 python3 part6_attribution.py                    # P6
-python3 part7_scaleup_test.py                   # P7
+python3 part7_arm_comparison.py                   # P7
 ```
 
 The notebook has been verified to execute top-to-bottom in a clean venv. `requirements.txt` was generated from that environment — the previously documented install line was missing `ipykernel`, `scipy`, and `openpyxl`.
