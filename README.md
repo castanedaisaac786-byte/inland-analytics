@@ -286,6 +286,53 @@ Two pre-registered hypotheses: **H1**, that observed cost per booking at scale f
 
 ---
 
+
+## Part 8: Conversation Depth and Booking
+
+Every prior significant result in this project was a **cost** finding that
+died at the booking stage. This one is the booking stage.
+
+116 inbound leads, Jul 11 – Aug 23 2026, each hand-labelled from the actual
+message thread with an outcome and a message count.
+
+| | n | mean messages | median |
+|---|---|---|---|
+| **Booked** | 16 | **19.9** | 19.5 |
+| Not booked | 100 | 5.5 | 4.0 |
+
+**Gap of +14.3 messages. Permutation test, 10,000 resamples, p < 0.0001.**
+Not one shuffle produced a gap that large.
+
+| Messages | Leads | Booked | Rate |
+|---|---|---|---|
+| 0–5 | 62 | 0 | **0%** |
+| 6–9 | 22 | 2 | 9.1% |
+| 10–14 | 17 | 2 | 11.8% |
+| **15+** | **15** | **12** | **80%** |
+
+Sixty-two leads under six messages produced zero bookings. Above fifteen, four
+in five close.
+
+### This reverses Part 3
+
+Part 3 concluded *"the leak isn't rejection, it's silence"* from 46%
+non-response on n = 24. At n = 116, non-response is **19.8%**. The dominant
+failure mode is **`quoted_no_book` at 56%** — leads that engaged, received a
+price, and stalled mid-conversation. Part 3's finding was a small-sample
+artifact; this is the correction.
+
+### Limitations
+
+- **Correlational.** Intent drives both message count and booking. Message
+  count is partly an effect of wanting to book, not only a cause of it.
+- **`Message_count` excludes phone calls.** Two booked leads moved to a call
+  after ~6 messages and are undercounted; they are the 6–9 band's 2 bookings.
+- **Outcomes were hand-labelled by the operator**, who knew which leads booked.
+- Survives Bonferroni across all 8 project tests (threshold 0.00625) — one of
+  only two results that does.
+
+Run: `python3 part8_conversation_depth.py`
+
 ## Current Status
 
 *Last verified: August 23, 2026*
