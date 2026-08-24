@@ -56,6 +56,7 @@ CREATIVE_SPEND = {
     "Denise Reactions": 139.04,   # 42.84 + 96.20, two separate campaign runs
     "August Broad":     113.13,
     "Patrick Ads":      130.00,
+    "Any time - Copy":   22.96,
     "Pet Hair Removal":   None,   # shares the $330.69 unattributed bucket
     "Unspecified":        None,   # with Pet Hair Removal; split unknown
 }
