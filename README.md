@@ -297,10 +297,10 @@ message thread with an outcome and a message count.
 
 | | n | mean messages | median |
 |---|---|---|---|
-| **Booked** | 16 | **19.9** | 19.5 |
-| Not booked | 100 | 5.5 | 4.0 |
+| **Booked** | 18 | **18.4** | 18.5 |
+| Not booked | 99 | 5.6 | 4.0 |
 
-**Gap of +14.3 messages. Permutation test, 10,000 resamples, p < 0.0001.**
+**Gap of +12.8 messages. Permutation test, 10,000 resamples, p < 0.0001.**
 Not one shuffle produced a gap that large.
 
 | Messages | Leads | Booked | Rate |
@@ -312,10 +312,19 @@ Not one shuffle produced a gap that large.
 | 10-14 | 18 | 3 | 16.7% |
 | 15+ | 15 | 12 | 80.0% |
 
-Above fifteen messages, four in five close. Below it, conversion is low and
-unstructured — the 1-2 and 6-9 bands each hold one or two bookings, so the
-threshold is a jump at 15, not a clean floor beneath it. Updated Aug 24 as
-out-of-sample bookings landed; the permutation result held at p < 0.0001.
+![Booking rate by conversation depth](part8_booking_by_message_band.png)
+
+
+The four bands from 1 to 14 messages average 6.5% and show no upward trend.
+Above fifteen, four in five close. This is not "more messages is better" — it
+is a wall. Conversations either get past it or they die, and the ones that die
+fail at roughly the same rate whether they ran two messages or fourteen.
+
+That changes the action. The goal is not to add two messages to a six-message
+thread; it is to get threads past the wall at all.
+
+Updated Aug 24 as out-of-sample bookings landed. The permutation result held
+at p < 0.0001 and the gap narrowed from 14.3 to 12.8 messages.
 
 ### This reverses Part 3
 
