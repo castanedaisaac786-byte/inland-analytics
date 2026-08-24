@@ -310,8 +310,10 @@ Not one shuffle produced a gap that large.
 | 10–14 | 17 | 2 | 11.8% |
 | **15+** | **15** | **12** | **80%** |
 
-Sixty-two leads under six messages produced zero bookings. Above fifteen, four
-in five close.
+Above fifteen messages, four in five close. Below it, conversion is low and
+unstructured — the 1-2 and 6-9 bands each hold one or two bookings, so the
+threshold is a jump at 15, not a clean floor beneath it. Updated Aug 24 as
+out-of-sample bookings landed; the permutation result held at p < 0.0001.
 
 ### This reverses Part 3
 
