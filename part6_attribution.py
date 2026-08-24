@@ -11,7 +11,9 @@ THREE THINGS IT FINDS, EACH OF WHICH CORRECTS A PUBLISHED NUMBER
 1. ROAS OVERSTATEMENT. Five jobs tagged channel="Meta Ads" were explicitly
    logged as organic Instagram DMs or feed visits with no ad involved. They
    contribute $1,010 of the $3,525 "Meta Ads" revenue. Real ad-attributed
-   ROAS is 3.73x, not the 5.23x in the README — a 40% overstatement.
+   ROAS is 3.20x against a published 5.23x — the published figure was 63%
+   too high. Both the numerator (organic jobs) and the denominator (stale
+   spend of $673.49 vs a true $786.08) were wrong.
 
    Note the direction. The README previously flagged the OPPOSITE error
    (jobs from ads tagged as organic). Both exist. Channel tagging was wrong

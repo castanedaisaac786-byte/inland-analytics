@@ -1,7 +1,7 @@
 """
 Meta Ads Analyzer + Predictor
 ================================
-Two honest tools built from 16 real past campaigns (big camp and the
+Two honest tools built from 14 real past campaigns (big camp and the
 never-really-ran "Copy" campaign excluded - see meta_ads_report_v2.xlsx
 for why):
 

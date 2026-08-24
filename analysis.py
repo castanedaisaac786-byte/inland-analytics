@@ -30,9 +30,19 @@ ads = pd.read_csv("data/ad_spend.csv")
 jobs["date"] = pd.to_datetime(jobs["date"], errors="coerce")
 
 # Fallback: if "total" wasn't recorded but job_value was, use job_value.
-jobs["total_clean"] = jobs["total"].fillna(jobs["job_value"] + jobs["tip"].fillna(0))
+# Rule 2: never trust a manually entered total. Recompute always, and
+# FLAG any row where the sheet disagrees. The previous version used the
+# entered total when present and only fell back to recomputation, which is
+# how the Dr Morral 8/7 tip drop reached metrics.json silently.
+jobs["total_clean"] = jobs["job_value"].fillna(0) + jobs["tip"].fillna(0)
+_mismatch = jobs["total"].notna() & (jobs["total"] != jobs["total_clean"])
+if _mismatch.any():
+    print(f"WARNING: {_mismatch.sum()} row(s) where the sheet total disagrees "
+          f"with job_value + tip. Recomputed values are used:")
+    print(jobs.loc[_mismatch, ["date", "customer", "job_value", "tip", "total",
+                               "total_clean"]].to_string(index=False))
 
-# Detail-service jobs only (excludes 2 non-detail side jobs: vinyl fencing,
+# Detail-service jobs only (excludes 4 non-detail side jobs: vinyl fencing,
 # decor change — real income, but not part of the detailing business itself).
 detail_jobs = jobs[jobs["is_detail_job"] == 1].copy()
 

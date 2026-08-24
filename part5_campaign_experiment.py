@@ -52,7 +52,10 @@ from scipy import stats
 REFERENCE = {
     "name":     "Denise Reactions creative (two runs)",
     "spend":    139.04,     # $42.84 + $96.20, RESOLVED Aug 2026
-    "messages": 26,
+    "messages": 49,         # 17 + 32 across the creative's TWO runs.
+                            # The earlier 26 belonged to "Real results, real
+                            # feedback" — a different creative. Numerator and
+                            # denominator had come from different campaigns.
     "bookings": 2,          # from the audited job log, not recall
 }
 REFERENCE["conv_rate"]       = REFERENCE["bookings"] / REFERENCE["messages"]
@@ -94,8 +97,10 @@ CONFOUNDS = [
 # =============================================================================
 # 3. CURRENT STATE
 # =============================================================================
-CURRENT_A = {"spend": 95.01, "messages": 58, "bookings": 0}
-CURRENT_B = {"spend": 20.72, "leads":     3, "bookings": 1}   # tentative
+# Figures below come from the Meta ad-level export, not the app UI.
+# The earlier $95.01 / 58 reconciled to no campaign in any export.
+CURRENT_A = {"spend": 56.61, "messages": 34, "bookings": 1}   # Optimized targeting Camp
+CURRENT_B = {"spend": 20.77, "leads":     3, "bookings": 0}   # tentative booking not confirmed
 
 
 def evaluate_zero_result(spend, events, hypothesis_rate, benchmark_cpb):
