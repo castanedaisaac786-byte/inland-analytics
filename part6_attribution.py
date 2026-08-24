@@ -90,7 +90,7 @@ def load(path=JOB_LOG):
 
     # Rule 2: never trust a manually entered total.
     df["total"] = df.job_value.fillna(0) + df.tip.fillna(0)
-    df["total_mismatch"] = df.logged_total != df.total
+    df["total_mismatch"] = df.logged_total.notna() & (df.logged_total != df.total)
     return df
 
 
