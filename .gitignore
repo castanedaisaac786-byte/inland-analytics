@@ -6,3 +6,6 @@ __pycache__/
 .ipynb_checkpoints/
 __pycache__/
 *.bak
+data/_leads_raw.csv
+data/_leads_crosswalk.csv
+*.pdf
