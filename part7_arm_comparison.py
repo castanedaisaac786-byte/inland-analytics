@@ -1,3 +1,12 @@
+import numpy as np
+from scipy import stats
+
+REGISTERED = "2026-08-24"
+MIN_SPEND_TO_JUDGE_B = 112.0
+DAYS = 14
+PRIOR = {"messages": {"spend": 74.99, "bookings": 2, "revenue": 425.0}, "form": {"spend": 101.81, "bookings": 0, "revenue": 0.0}}
+ARMS = {"A_messages": {"campaign": "Optimized targeting Camp - Copy", "daily": 20.0, "spend": 18.38, "events": 3, "bookings": 1, "revenue": 300.0}, "B_form": {"campaign": "B Leads Test", "daily": 5.0, "spend": 50.76, "events": 4, "bookings": 0, "revenue": 0.0}}
+
 
 
 def poisson_hi(n, exposure, conf=0.95):
