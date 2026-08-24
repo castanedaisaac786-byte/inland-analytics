@@ -1,23 +1,23 @@
 {
   "generated_from": "INLAND TRACKER job log (6/14/26 - 8/9/26) + Meta Ads Manager lifetime export",
-  "data_quality_note": "Source sheet logs 37 rows total, incl. 4 non-detail side jobs (vinyl fencing, decor change, garage organization, party planning) and 4 pressure-wash jobs, reclassified as non-detail since exterior/patio pressure washing is not a vehicle-detailing service. Restricting to priced, vehicle-detail-service jobs yields 29 jobs \u2014 fewer than the source sheet's own '33 jobs' label, since that label originally counted pressure-washing as a detail service; this analysis defines 'detail' more narrowly on purpose. The sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum of its own Total column on the original basis \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
+  "data_quality_note": "Source sheet logs 38 rows total, incl. 4 non-detail side jobs (vinyl fencing, decor change, garage organization, party planning) and 4 pressure-wash jobs, reclassified as non-detail since exterior/patio pressure washing is not a vehicle-detailing service. Restricting to priced, vehicle-detail-service jobs yields 30 jobs \u2014 fewer than the source sheet's own '33 jobs' label, since that label originally counted pressure-washing as a detail service; this analysis defines 'detail' more narrowly on purpose. The sheet's own TOTALS row ($5,561) also doesn't fully reconcile with the sum of its own Total column on the original basis \u2014 likely a SUM() range that doesn't cover every row. This script recomputes from raw rows rather than trusting the sheet's own total.",
   "headline": {
-    "total_jobs": 37,
-    "total_detail_jobs": 29,
-    "total_revenue": 4721.0,
-    "avg_ticket": 162.79,
+    "total_jobs": 38,
+    "total_detail_jobs": 30,
+    "total_revenue": 5021.0,
+    "avg_ticket": 167.37,
     "total_ad_spend": 786.08,
-    "meta_revenue": 2515.0,
-    "meta_jobs": 14,
-    "meta_roas": 3.2,
-    "blended_cost_per_meta_job": 56.15
+    "meta_revenue": 2815.0,
+    "meta_jobs": 15,
+    "meta_roas": 3.58,
+    "blended_cost_per_meta_job": 52.41
   },
   "channel_performance": [
     {
       "channel": "Meta Ads",
-      "jobs": 14,
-      "revenue": 2515.0,
-      "avg_ticket": 179.64
+      "jobs": 15,
+      "revenue": 2815.0,
+      "avg_ticket": 187.67
     },
     {
       "channel": "Instagram (Organic)",
@@ -100,6 +100,11 @@
       "city": "Fontana",
       "jobs": 2,
       "revenue": 310.0
+    },
+    {
+      "city": "REPLACE_CITY",
+      "jobs": 1,
+      "revenue": 300.0
     },
     {
       "city": "Eastvale",
@@ -189,8 +194,8 @@
   "tier_mix": [
     {
       "tier": "Premium",
-      "jobs": 9,
-      "revenue": 1945.0
+      "jobs": 10,
+      "revenue": 2245.0
     },
     {
       "tier": "Standard",
