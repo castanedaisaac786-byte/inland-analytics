@@ -47,7 +47,7 @@ import pandas as pd
 import numpy as np
 
 JOB_LOG = "data/job_log.csv"
-META_LIFETIME_SPEND = 785.00   # updated 2026-08-23
+META_LIFETIME_SPEND = 809.04   # updated 2026-08-23
 
 # Spend per creative, from the Meta Ads Manager lifetime export.
 # None = the creative could not be matched to a single spend line.
@@ -137,7 +137,7 @@ def attribution_audit(d):
     print()
     reported = meta.total.sum() / META_LIFETIME_SPEND
     actual = paid.total.sum() / META_LIFETIME_SPEND
-    published = meta.total.sum() / 673.49          # the README's figure
+    published = meta.total.sum() / 673.49  # the original stale denominator          # the README's figure
     print(f"  ROAS as published      {published:.2f}x   (${meta.total.sum():,.0f} / $673.49)")
     print(f"  ROAS, ad-attributed    {actual:.2f}x   (${paid.total.sum():,.0f} / ${META_LIFETIME_SPEND:,.2f})")
     print(f"  Published figure is    {(published/actual - 1) * 100:.0f}% too high")
@@ -198,7 +198,7 @@ def benchmark_audit(paid):
     print(f"                   -> ${cpb:.2f} per booking, {den.total.sum()/spend:.2f}x")
     print()
     print("  PART 5 BREAK-EVEN, recomputed against the real benchmark:")
-    for name, sp, ev in [("messages arm", 95.01, 58), ("leads arm", 20.72, 3)]:
+    for name, sp, ev in [("messages arm", 56.61, 34), ("leads arm", 20.77, 3)]:
         print(f"    {name:<14} ${sp:6.2f} / {ev:2d} events = ${sp/ev:.2f}/event "
               f"-> needs {sp/ev/cpb:.1%} conversion")
     print()
