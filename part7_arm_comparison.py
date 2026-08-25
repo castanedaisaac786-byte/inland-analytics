@@ -134,3 +134,17 @@ if __name__ == "__main__":
     print("FILL IN AFTER DAY 14")
     print("=" * 72)
     print("  evaluate(arm_a_spend=?, arm_a_bookings=?, arm_b_spend=?, arm_b_bookings=?)")
+
+OUTCOME: STOPPED EARLY, 2026-08-24.
+Arm B was killed at $50.76 of its $112 pre-registered minimum, one day into
+a 14-day window. The operator judged the form mechanism not worth further
+spend given $101.81 of lifetime form spend across two campaigns with zero
+bookings.
+
+This is a business decision, not a test result. Arm B never reached the
+sample size at which its zero becomes informative — at $50.76 an equally
+good arm shows zero 25.8% of the time. The licensed claim is "the form
+mechanism was abandoned before it could be evaluated", not "forms lost".
+
+The pre-registered rule was violated by the person who wrote it. That is
+recorded here rather than quietly dropped.

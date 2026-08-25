@@ -355,7 +355,7 @@ Run: `python3 part8_conversation_depth.py`
 - **Best creative: Save 2007 Chevy at $18.04/booking, 8.18x** — 7.2x better than the worst
 - **Maintenance: 21% positive rate; D2D ahead of Meta Ads but p = 1.000**
 - **Placement: Reels cheapest ($3.46/msg); Stories worst ($8.03, p = 0.0004)**
-- **Live: leads arm 1 booking on $20.72; messages arm 0 on $95.01 across 58 messages**
+- **Live: messages arm 2 bookings on $74.99 ($37.49 each); form arm 0 bookings on $101.81 lifetime, stopped 8/24**
 
 ## Known gaps
 
