@@ -151,9 +151,11 @@ The pre-registered rule was violated by the person who wrote it. That is
 recorded here rather than quietly dropped.
 """
 
+"""
 PROTOCOL DEVIATION, 2026-08-25. A third message variant (finished-car
 video + one named slot) was sent ad hoc to leads in both arms after it
 produced two revivals in 20 minutes on threads dead for 6+ weeks (L100,
 Eduardo/L082). The A/B assignment is therefore contaminated. Recorded
 here rather than dropped. The arms can no longer be cleanly compared;
 the video variant should be tested on its own against a held-out set.
+"""
